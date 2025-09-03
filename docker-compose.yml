@@ -1,0 +1,87 @@
+services:
+  # Medusa API Backend
+  api:
+    build:
+      context: ./solace-medusa-starter-api
+      dockerfile: Dockerfile.dev
+    container_name: solace_api
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./solace-medusa-starter-api:/app
+      - /app/node_modules
+    env_file:
+      - ./solace-medusa-starter-api/.env
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - solace-net
+
+  # Strapi CMS
+  cms:
+    build:
+      context: ./solace-medusa-starter-strapi
+      dockerfile: dockerfile.dev
+    container_name: solace_cms
+    ports:
+      - "1337:1337"
+    volumes:
+      - ./solace-medusa-starter-strapi:/app
+      - /app/node_modules
+    env_file:
+      - ./solace-medusa-starter-strapi/.env
+    depends_on:
+      - postgres
+    networks:
+      - solace-net
+
+  # Next.js Storefront
+  storefront:
+    build:
+      context: ./solace-medusa-starter
+      dockerfile: Dockerfile.dev
+    container_name: solace_storefront
+    ports:
+      - "3000:8000"
+    volumes:
+      - ./solace-medusa-starter:/app
+    env_file:
+      - ./solace-medusa-starter/.env
+    depends_on:
+      - api
+      - cms
+    networks:
+      - solace-net
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: solace_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: medusa_user
+      POSTGRES_PASSWORD: medusa_password
+      POSTGRES_DB: medusa_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - solace-net
+
+  # Redis Cache
+  redis:
+    image: redis:alpine
+    container_name: solace_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - solace-net
+
+networks:
+  solace-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
