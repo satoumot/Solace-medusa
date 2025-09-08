@@ -24,11 +24,16 @@ services:
       context: ./solace-medusa-starter-strapi
       dockerfile: dockerfile.dev
     container_name: solace_cms
+    restart: unless-stopped
     ports:
       - "1337:1337"
     volumes:
-      - ./solace-medusa-starter-strapi:/app
-      - /app/node_modules
+      - ./solace-medusa-starter-strapi/config:/opt/app/config
+      - ./solace-medusa-starter-strapi/src:/opt/app/src
+      - ./solace-medusa-starter-strapi/package.json:/opt/package.json
+      - ./solace-medusa-starter-strapi/package-lock.json:/opt/package-lock.json
+      - ./solace-medusa-starter-strapi/.env:/opt/app/.env
+      - ./solace-medusa-starter-strapi/public/uploads:/opt/app/public/uploads
     env_file:
       - ./solace-medusa-starter-strapi/.env
     depends_on:
@@ -46,6 +51,8 @@ services:
       - "3000:8000"
     volumes:
       - ./solace-medusa-starter:/app
+      - /app/node_modules
+      - /app/.next
     env_file:
       - ./solace-medusa-starter/.env
     depends_on:
