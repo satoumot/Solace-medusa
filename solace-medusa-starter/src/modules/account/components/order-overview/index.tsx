@@ -53,11 +53,10 @@ export function NoOrders() {
       <BoxIcon />
       <Box className="flex flex-col items-center gap-2">
         <Heading as="h2" className="text-xl text-basic-primary small:text-2xl">
-          No order updates
+          注文履歴：0件
         </Heading>
         <Text className="max-w-[438px] text-center text-md text-secondary">
-          No latest updates on your orders. Start shopping to see your latest
-          order activity here.
+          注文履歴はありません。履歴を確認するには注文をしてください。
         </Text>
       </Box>
     </Box>

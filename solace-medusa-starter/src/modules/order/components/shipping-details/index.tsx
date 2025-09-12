@@ -22,22 +22,17 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
   return (
     <Box className="bg-primary p-2">
       <Box className="p-4">
-        <Text size="large">Shipping address</Text>
+        <Text size="large">基本情報</Text>
         <Text size="base" className="text-secondary">
           {`${order.shipping_address.first_name} ${order.shipping_address.last_name}`}
         </Text>
         <Text size="base" className="text-secondary">
-          {`${order.shipping_address.company ? `${order.shipping_address.company}, ` : ''}${order.shipping_address.address_1} ${order.shipping_address.address_2}`}
-        </Text>
-        <Text size="base" className="text-secondary">
-          {`${order.shipping_address.postal_code} ${order.shipping_address.city}, ${order.shipping_address.country_code.toUpperCase()}`}
-        </Text>
-        <Text size="base" className="text-secondary">
           {`${order.email}, ${order.shipping_address.phone}`}
         </Text>
+
       </Box>
       <Box className="p-4">
-        <Text size="large">Billing address</Text>
+        {/* <Text size="large">Billing address</Text>
         {sameAsShipping ? (
           <Text size="base" className="text-secondary">
             Same as shipping address
@@ -57,7 +52,14 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
               {`${order.email}, ${order.billing_address.phone}`}
             </Text>
           </>
-        )}
+        )} */}
+        <Text size="large">配送先</Text>
+        {/* <Text size="base" className="text-secondary">
+          {`${order.shipping_address.company ? `${order.shipping_address.company}, ` : ''}${order.shipping_address.address_1} ${order.shipping_address.address_2}`}
+        </Text> */}
+        <Text size="base" className="text-secondary">
+          {`${order.shipping_address.postal_code} ${order.shipping_address.province} ${order.shipping_address.city} ${order.shipping_address.address_1} ${order.shipping_address.address_2}`}
+        </Text>
       </Box>
     </Box>
   )

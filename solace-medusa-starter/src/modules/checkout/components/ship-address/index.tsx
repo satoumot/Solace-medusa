@@ -140,7 +140,7 @@ const ShippingAddress = ({
           hidden: customer && (addressesInRegion?.length || 0) > 0,
         })}
       >
-        <Input
+        {/* <Input
           label="苗字"
           name="shipping_address.last_name"
           autoComplete="family-name"
@@ -159,29 +159,8 @@ const ShippingAddress = ({
           required
           error={errors?.shipping_address?.first_name}
           data-testid="shipping-first-name-input"
-        />
+        /> */}
 
-
-        <Input
-          label="苗字カナ"
-          name="shipping_address.last_name_kana"
-          autoComplete="family-name"
-          // value={values.shipping_address.last_name}
-          onChange={handleChange}
-          required
-          error={errors?.shipping_address?.last_name}
-          data-testid="shipping-last-name-input"
-        />
-        <Input
-          label="名前カナ"
-          name="shipping_address.first_name_kana"
-          autoComplete="given-name"
-          // value={values.shipping_address.first_name}
-          onChange={handleChange}
-          required
-          error={errors?.shipping_address?.first_name}
-          data-testid="shipping-first-name-input"
-        />
         {/* <Input
           label="Company name (optional)"
           name="shipping_address.company"
@@ -190,16 +169,6 @@ const ShippingAddress = ({
           autoComplete="organization"
           data-testid="shipping-company-input"
         /> */}
-        <Input
-          label="学籍番号"
-          name="shipping_address.student_num"
-          // autoComplete="given-name"
-          // value={values.shipping_address.first_name}
-          onChange={handleChange}
-          required
-          // error={errors?.shipping_address?.first_name}
-          // data-testid="shipping-first-name-input"
-        />
         <Input
           label="郵便番号"
           name="shipping_address.postal_code"
@@ -228,18 +197,6 @@ const ShippingAddress = ({
           error={errors?.shipping_address?.city}
           data-testid="shipping-city-input"
         />
-        {/* <CountrySelect
-          label="Country"
-          name="shipping_address.country_code"
-          autoComplete="country"
-          region={cart?.region}
-          value={values.shipping_address.country_code}
-          onChange={
-            handleChange as unknown as ChangeEventHandler<HTMLSelectElement>
-          }
-          error={errors?.shipping_address?.country_code}
-          data-testid="shipping-country-select"
-        /> */}
         <Input
           label="丁目番地"
           name="shipping_address.address_1"
@@ -258,10 +215,22 @@ const ShippingAddress = ({
           onChange={handleChange}
           required
           error={errors?.shipping_address?.address_2}
-          data-testid="shipping-address-input"
+          data-testid="shipping-address2-input"
         />
-        <Input
-          label="メールアドレス"
+        {/* <CountrySelect
+          label="Country"
+          name="shipping_address.country_code"
+          autoComplete="country"
+          region={cart?.region}
+          value={values.shipping_address.country_code}
+          onChange={
+            handleChange as unknown as ChangeEventHandler<HTMLSelectElement>
+          }
+          error={errors?.shipping_address?.country_code}
+          data-testid="shipping-country-select"
+        /> */}
+        {/* <Input
+          label="Email"
           name="email"
           type="email"
           title="Enter a valid email address."
@@ -273,7 +242,7 @@ const ShippingAddress = ({
           data-testid="billing-email-input"
         />
         <Input
-          label="電話番号"
+          label="Phone number"
           name="shipping_address.phone"
           autoComplete="tel"
           value={values.shipping_address.phone}
@@ -281,7 +250,7 @@ const ShippingAddress = ({
           required
           error={errors?.shipping_address?.phone}
           data-testid="shipping-phone-input"
-        />
+        /> */}
       </Box>
       {/* <Box className="my-6 flex items-center gap-x-2">
         <Checkbox

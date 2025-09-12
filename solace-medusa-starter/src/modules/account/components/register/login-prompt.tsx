@@ -11,14 +11,14 @@ export default function LoginPrompt({
   return (
     <Box className="flex w-full flex-col gap-6 bg-primary p-4 small:p-5">
       <Heading as="h2" className="text-xl small:text-2xl">
-        Already have an account?
+        すでにアカウントをお持ちの方はこちら
       </Heading>
       <Button
         variant="tonal"
         className="w-full"
         onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
       >
-        Log in
+        ログイン
       </Button>
     </Box>
   )

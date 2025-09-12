@@ -8,7 +8,7 @@ const SkeletonProductsCarousel = () => {
       <div className="h-12 w-[250px] animate-pulse bg-skeleton-primary" />
       <ul
         className="grid w-full grid-cols-1 gap-x-2 gap-y-6 small:grid-cols-2 large:grid-cols-3"
-        data-testid="products-list"
+        data-testid=""
       >
         {repeat(3).map((index) => (
           <li key={index}>

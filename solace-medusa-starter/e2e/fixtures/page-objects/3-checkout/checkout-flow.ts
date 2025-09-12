@@ -185,7 +185,7 @@ class Checkout {
     const orderConfirmedPage = await this.page.locator('h1').textContent()
 
     expect(orderConfirmedPage).toContain(
-      'Thank you! Your order was placed successfully'
+      'ご注文いただきありがとうございました。ご注文は正常に完了いたしました。'
     )
   }
 }

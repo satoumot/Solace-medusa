@@ -84,9 +84,9 @@ const AddressModalForm: React.FC<AddressModalFormProps> = ({
 
   useEffect(() => {
     if (isAddingNewAddress && addFormState.success) {
-      toast('success', 'Address was added.')
+      toast('success', '住所が追加されました')
     } else if (!isAddingNewAddress && editFormState.success) {
-      toast('success', 'Address was updated.')
+      toast('success', '住所が更新されました')
     }
   }, [editFormState, addFormState, isAddingNewAddress])
 

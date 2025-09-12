@@ -72,7 +72,7 @@ export default function ProductActions({
     } finally {
       setTimeout(() => {
         openCartDropdown()
-        toast('success', 'Product was added to cart!')
+        toast('success', 'カートに追加されました')
       }, 1000)
 
       setIsAdding(false)
@@ -158,7 +158,7 @@ export default function ProductActions({
       <div className="flex flex-col gap-y-6" ref={actionsRef}>
         <ProductPrice product={product} variant={selectedVariant} />
         <Divider />
-        <div>
+        {/* <div>
           {product.variants.length > 0 && (
             <div className="flex flex-col gap-y-4">
               {(product.options || []).map((option) => {
@@ -178,7 +178,7 @@ export default function ProductActions({
               })}
             </div>
           )}
-        </div>
+        </div> */}
         <Box className="flex items-center gap-x-3">
           <Box className="min-w-[96px]">
             <ItemQtySelect
@@ -196,15 +196,15 @@ export default function ProductActions({
               isAdding ||
               maxQuantity === 0
             }
-            className="w-full"
+            className="w-full bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]"
             isLoading={isAdding}
             data-testid="add-product-button"
           >
             {!selectedVariant
               ? 'Select variant'
               : !inStock
-                ? 'Out of stock'
-                : 'Add to cart'}
+                ? '在庫切れ'
+                : 'カートに追加'}
           </Button>
         </Box>
         {maxQuantity === 0 && inStock && (

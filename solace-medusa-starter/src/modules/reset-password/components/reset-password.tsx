@@ -99,7 +99,7 @@ export function ResetPassword() {
     if (localMessage) {
       toast(
         'error',
-        'An error occurred while resetting the password. Please try again later.'
+        'パスワードのリセット中にエラーが発生しました'
       )
       setLocalMessage(null)
     }

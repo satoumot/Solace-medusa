@@ -47,7 +47,7 @@ export default async function OrderCard({
           className="flex justify-end large:hidden"
         >
           <LocalizedClientLink href={`/account/orders/details/${order.id}`}>
-            View order
+            詳細
           </LocalizedClientLink>
         </Button>
       </Box>
@@ -93,7 +93,7 @@ export default async function OrderCard({
           className="hidden w-max justify-end large:flex"
         >
           <LocalizedClientLink href={`/account/orders/details/${order.id}`}>
-            View order
+            詳細
           </LocalizedClientLink>
         </Button>
       </Box>

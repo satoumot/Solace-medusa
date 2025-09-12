@@ -20,7 +20,7 @@ export default function ProductBreadcrumbs({
 }) {
   return (
     <>
-      <Breadcrumbs className="text-basic-primary">
+      {/* <Breadcrumbs className="text-basic-primary">
         <BreadcrumbsList className="hidden small:flex">
           <BreadcrumbsItem>
             <BreadcrumbsLink href="/">Home Page</BreadcrumbsLink>
@@ -64,7 +64,7 @@ export default function ProductBreadcrumbs({
             )}
           </BreadcrumbsItem>
         </BreadcrumbsList>
-      </Breadcrumbs>
+      </Breadcrumbs> */}
     </>
   )
 }

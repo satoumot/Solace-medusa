@@ -16,10 +16,14 @@ export default async function PageLayout(props: {
   const { countryCode } = await props.params
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <NavWrapper countryCode={countryCode} />
-      {props.children}
+      
+      <main className="flex-grow">
+        {props.children}
+      </main>
+
       <Footer countryCode={countryCode} />
-    </>
+    </div>
   )
 }

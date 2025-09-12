@@ -10,7 +10,7 @@ export const UserIcon = (props: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <title>User Icon</title>
+      {/* <title>User Icon</title> */}
       <path
         fillRule="evenodd"
         clipRule="evenodd"

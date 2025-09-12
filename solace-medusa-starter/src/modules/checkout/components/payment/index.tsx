@@ -104,6 +104,7 @@ const Payment = ({
       await initiatePaymentSession(cart, {
         provider_id: paymentMethodId,
       })
+      router.push(pathname + '?step=address') 
     } catch (err: any) {
       setError(err.message)
     } finally {
@@ -140,13 +141,13 @@ const Payment = ({
           })}
         >
           {!isOpen && !paymentReady ? (
-            <Stepper>3</Stepper>
+            <Stepper>2</Stepper>
           ) : !isOpen && paymentReady ? (
             <Stepper state="completed" />
           ) : (
-            <Stepper state="focussed">3</Stepper>
+            <Stepper state="focussed">2</Stepper>
           )}
-          Payment
+          支払い方法
         </Heading>
         {!isOpen && paymentReady && (
           <Button
@@ -155,7 +156,7 @@ const Payment = ({
             onClick={handleEdit}
             data-testid="edit-payment-button"
           >
-            Edit
+            編集
           </Button>
         )}
       </Box>
@@ -182,7 +183,7 @@ const Payment = ({
                     )
                   })}
               </RadioGroup>
-              {isStripe && stripeReady && (
+              {/* {isStripe && stripeReady && (
                 <div className="mt-5 transition-all duration-150 ease-in-out">
                   <Text className="mb-3 text-md text-basic-primary">
                     Enter your card details:
@@ -199,14 +200,14 @@ const Payment = ({
                     }}
                   />
                 </div>
-              )}
+              )} */}
             </>
           )}
 
-          {paidByGiftcard && (
+          {/* {paidByGiftcard && (
             <div className="flex flex-col">
               <Text className="txt-medium-plus mb-1 text-ui-fg-base">
-                Payment method
+                支払い方法
               </Text>
               <Text
                 className="txt-medium text-ui-fg-subtle"
@@ -215,14 +216,14 @@ const Payment = ({
                 Gift card
               </Text>
             </div>
-          )}
+          )} */}
 
           <ErrorMessage
             error={error}
             data-testid="payment-method-error-message"
           />
 
-          {!activeSession && isStripeFunc(selectedPaymentMethod) && (
+          {/* {!activeSession && isStripeFunc(selectedPaymentMethod) && (
             <Button
               className="mt-6"
               onClick={() => handleSubmit(selectedPaymentMethod)}
@@ -235,7 +236,7 @@ const Payment = ({
             >
               Enter card details
             </Button>
-          )}
+          )} */}
         </Box>
 
         <Box className={isOpen ? 'hidden' : 'block'}>
@@ -243,7 +244,7 @@ const Payment = ({
             <Box className="flex flex-col items-start">
               <Box className="flex w-full flex-col p-4">
                 <Text size="lg" className="font-normal text-basic-primary">
-                  Payment method
+                  支払い方法
                 </Text>
                 <Text
                   className="font-normal text-secondary"
@@ -255,7 +256,7 @@ const Payment = ({
               </Box>
               <Box className="flex w-full flex-col p-4">
                 <Text size="lg" className="font-normal text-basic-primary">
-                  Payment details
+                  詳細
                 </Text>
                 <div
                   className="flex items-center gap-2 text-md text-basic-primary"
@@ -277,14 +278,14 @@ const Payment = ({
           ) : paidByGiftcard ? (
             <Box className="flex w-full flex-col p-4">
               <Text size="lg" className="font-normal text-basic-primary">
-                Payment method
+                支払い方法
               </Text>
-              <Text
+              {/* <Text
                 className="font-normal text-secondary"
                 data-testid="payment-method-summary"
               >
                 Gift card
-              </Text>
+              </Text> */}
             </Box>
           ) : null}
         </Box>

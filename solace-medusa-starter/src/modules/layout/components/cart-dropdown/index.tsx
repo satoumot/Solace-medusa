@@ -77,7 +77,8 @@ const CartDropdown = ({
       onMouseLeave={closeCartDropdown}
     >
       <Popover className="relative h-full">
-        <Popover.Button className="rounded-full bg-transparent !p-2 text-action-primary hover:bg-fg-secondary-hover hover:text-action-primary-hover active:bg-fg-secondary-pressed active:text-action-primary-pressed xsmall:!p-3.5">
+        <Popover.Button className="rounded-full bg-transparent !p-2 text-white hover:bg-white/10 xsmall:!p-3.5">
+        {/* className="rounded-full bg-transparent !p-2 text-action-primary hover:bg-fg-secondary-hover hover:text-action-primary-hover active:bg-fg-secondary-pressed active:text-action-primary-pressed xsmall:!p-3.5"> */}
           <LocalizedClientLink href="/cart" data-testid="nav-cart-link">
             <Box className="relative">
               <BagIcon />
@@ -103,7 +104,7 @@ const CartDropdown = ({
             data-testid="nav-cart-dropdown"
           >
             <Box className="flex items-center border-b-[0.5px] border-basic-primary p-5">
-              <Text className="text-2xl">Shopping Cart</Text>
+              <Text className="text-2xl">カート商品</Text>
             </Box>
             {cartState && cartState.items?.length ? (
               <>
@@ -147,20 +148,19 @@ const CartDropdown = ({
                                           {item.product_title}
                                         </LocalizedClientLink>
                                       </h3>
-                                      <Box className="whitespace-nowrap">
+                                      {/* <Box className="whitespace-nowrap">
                                         <LineItemOptions
                                           variant={item.variant}
                                           data-testid="cart-item-variant"
                                           data-value={item.variant}
                                         />
-                                      </Box>
+                                      </Box> */}
                                       <span
                                         className="text-md text-secondary"
                                         data-testid="cart-item-quantity"
                                         data-value={item.quantity}
                                       >
-                                        {item.quantity}{' '}
-                                        {item.quantity > 1 ? 'items' : 'item'}
+                                        数量：{item.quantity}
                                       </span>
                                     </Box>
                                     <Box className="mt-3 flex">
@@ -186,7 +186,7 @@ const CartDropdown = ({
                 )}
                 <Box className="text-small-regular flex flex-col gap-y-4 border-t-[0.5px] border-basic-primary p-5">
                   <Box className="flex items-center justify-between">
-                    <Text className="text-md text-secondary">Total </Text>
+                    <Text className="text-md text-secondary">合計 </Text>
                     <Text
                       className="text-lg font-semibold"
                       data-testid="cart-subtotal"
@@ -199,8 +199,8 @@ const CartDropdown = ({
                     </Text>
                   </Box>
                   <LocalizedClientLink href="/cart" passHref>
-                    <Button className="w-full" data-testid="go-to-cart-button">
-                      Go to cart
+                    <Button className="w-full bg-[#B8193F] hover:bg-[#D6355D] active:bg-[#A11637]" data-testid="go-to-cart-button">
+                      カートを見る
                     </Button>
                   </LocalizedClientLink>
                 </Box>
@@ -210,15 +210,15 @@ const CartDropdown = ({
                 <BagIcon className="h-14 w-14" />
                 <Box className="flex flex-col items-center justify-center gap-y-2">
                   <Heading as="h4" className="text-2xl">
-                    Your shopping cart is empty.
+                    商品が空です
                   </Heading>
-                  <Text className="text-secondary">
+                  {/* <Text className="text-secondary">
                     Are you looking for inspiration?
-                  </Text>
+                  </Text> */}
                 </Box>
                 <Button onClick={closeCartDropdown} asChild className="w-full">
-                  <LocalizedClientLink href="/">
-                    Explore Home page
+                  <LocalizedClientLink href="/shop">
+                    商品を見る
                   </LocalizedClientLink>
                 </Button>
               </Box>

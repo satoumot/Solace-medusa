@@ -41,7 +41,7 @@ export function ProductActions({
         toast('error', result.error)
       }
     } catch (error) {
-      toast('error', 'An unexpected error occurred')
+      toast('error', '予期せぬエラーが発生しました')
     } finally {
       setIsAddingToCart(false)
     }

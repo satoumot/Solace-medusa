@@ -87,19 +87,17 @@ const Shipping: React.FC<ShippingProps> = ({
           ) : (
             <Stepper state="focussed">2</Stepper>
           )}
-          Delivery
+          受け取り方法
         </Heading>
         {!isOpen &&
-          cart?.shipping_address &&
-          cart?.billing_address &&
-          cart?.email && (
+          cart?.shipping_methods && (
             <Button
               variant="tonal"
               size="sm"
               onClick={handleEdit}
               data-testid="edit-delivery-button"
             >
-              Edit
+              編集
             </Button>
           )}
       </Box>
@@ -149,13 +147,13 @@ const Shipping: React.FC<ShippingProps> = ({
             data-testid="delivery-option-error-message"
           />
           <Button
-            className="mt-6"
+            className="mt-6 bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={!cart.shipping_methods?.[0]}
             data-testid="submit-delivery-option-button"
           >
-            Proceed to payment
+            支払い方法の選択に進む
           </Button>
         </Box>
       ) : (
@@ -163,7 +161,7 @@ const Shipping: React.FC<ShippingProps> = ({
           {cart && (cart.shipping_methods?.length ?? 0) > 0 && (
             <div className="flex flex-col p-4">
               <Text size="lg" className="text-basic-primary">
-                Delivery method
+                受け取り方法
               </Text>
               <Text className="text-secondary">
                 {selectedShippingMethod?.name},{' '}

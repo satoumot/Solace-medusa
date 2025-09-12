@@ -205,12 +205,13 @@ const StripePaymentButton = ({
         <PaymentElement key={clientSecret} />
       )}
       <Button
+        className='bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]'
         disabled={disabled || notReady}
         onClick={handlePayment}
         isLoading={submitting}
         data-testid={dataTestId}
       >
-        Place order
+        注文確定
       </Button>
       <ErrorMessage
         error={errorMessage}
@@ -313,12 +314,13 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
   return (
     <>
       <Button
+        className='bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]'
         disabled={notReady}
         isLoading={submitting}
         onClick={handlePayment}
         data-testid="submit-order-button"
       >
-        Place order
+        注文確定
       </Button>
       <ErrorMessage
         error={errorMessage}

@@ -18,17 +18,17 @@ const Overview = ({ orders }: OverviewProps) => {
     >
       <Box className="flex items-center justify-between">
         <Heading as="h2" className="text-xl small:text-2xl">
-          Latest order updates
+          最新の注文
         </Heading>
         <Button
           variant="text"
           size="sm"
           asChild
-          className="w-max"
+          className="w-max hover:bg-gray-300"
           data-testid="view-all-orders-button"
         >
           <LocalizedClientLink href={`/account/orders`}>
-            View all
+            注文履歴一覧
           </LocalizedClientLink>
         </Button>
       </Box>

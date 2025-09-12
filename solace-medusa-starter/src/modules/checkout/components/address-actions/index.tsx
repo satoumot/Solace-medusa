@@ -28,7 +28,7 @@ export default function AddressActions({
   const handleRemoveAddress = async (addressId: string) => {
     setRemoving(true)
     await deleteCustomerAddress(addressId)
-    toast('success', 'Address was deleted.')
+    toast('success', '住所が削除されました')
     setRemoving(false)
   }
 

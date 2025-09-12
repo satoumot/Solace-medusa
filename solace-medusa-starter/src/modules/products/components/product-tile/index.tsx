@@ -40,14 +40,14 @@ export function ProductTile({
       data-testid={formatNameForTestId(`${product.title}-product-tile`)}
     >
       <Box className="relative h-[290px] small:h-[504px]">
-        {isNew && (
+        {/* {isNew && (
           <Box className="absolute left-3 top-3 z-10 small:left-5 small:top-5">
             <Badge label="New product" variant="brand" />
           </Box>
-        )}
+        )} */}
         <LocalizedClientLink href={`/products/${product.handle}`}>
           <LoadingImage
-            src={product.thumbnail}
+            src={product.thumbnail ||'/Noimage.png' }
             alt={product.title}
             loading="lazy"
             className="h-full w-full object-cover"

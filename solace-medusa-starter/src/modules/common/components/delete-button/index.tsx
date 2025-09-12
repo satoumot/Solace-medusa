@@ -29,7 +29,7 @@ const DeleteButton = ({
         toast('error', err)
       })
       .finally(() => {
-        toast('success', 'Product was removed from cart.')
+        toast('success', 'カートから削除されました')
         setIsDeleting(false)
       })
   }

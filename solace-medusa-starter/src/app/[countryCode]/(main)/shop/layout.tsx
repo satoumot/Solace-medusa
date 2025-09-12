@@ -4,6 +4,8 @@ import { Box } from '@modules/common/components/box'
 import { Container } from '@modules/common/components/container'
 import { Heading } from '@modules/common/components/heading'
 import StoreBreadcrumbs from '@modules/store/templates/breadcrumbs'
+import { BookSearchForm } from '@modules/search/components/book-search-form'
+
 
 interface StorePageLayoutProps {
   children: React.ReactNode
@@ -24,9 +26,11 @@ export default function StorePageLayout({ children }: StorePageLayoutProps) {
             as="h1"
             className="text-4xl text-basic-primary small:text-5xl"
           >
-            All products
+            商品検索
           </Heading>
         </Box>
+        <BookSearchForm />
+
       </Container>
       {children}
     </>

@@ -67,10 +67,10 @@ const Item = ({ item, type = 'full' }: ItemProps) => {
                 {item.product_title}
               </Heading>
             </LocalizedClientLink>
-            <LineItemOptions
+            {/* <LineItemOptions
               variant={item.variant}
               data-testid="product-variant"
-            />
+            /> */}
           </Box>
           <Box className="block w-max small:hidden">
             <LineItemPrice item={item} style="tight" />
@@ -88,7 +88,7 @@ const Item = ({ item, type = 'full' }: ItemProps) => {
               {updating && <Spinner />}
             </Box>
           ) : (
-            <Text>{item.quantity} item</Text>
+            <Text>数量：{item.quantity}</Text>
           )}
         </Box>
         <Box

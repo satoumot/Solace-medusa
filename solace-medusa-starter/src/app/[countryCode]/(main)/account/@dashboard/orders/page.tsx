@@ -35,6 +35,13 @@ export default async function Orders(props: Props) {
 
   return (
     <div className="w-full" data-testid="orders-page-wrapper">
+      <div className="mb-4">
+        <input
+          type="search"
+          placeholder="注文履歴を検索..."
+          className="w-full p-2 border border-gray-300 rounded-md"
+        />
+      </div>
       <OrderOverview orders={orders as unknown as OrderType[]} page={page} />
     </div>
   )

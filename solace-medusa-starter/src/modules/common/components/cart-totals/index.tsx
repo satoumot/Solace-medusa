@@ -34,7 +34,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
       <Box className="flex flex-col gap-2">
         <Box className="flex items-center justify-between">
           <span className="flex items-center gap-x-1">
-            Subtotal (excl. shipping and taxes)
+            小計
           </span>
           <span
             data-value={item_subtotal || 0}
@@ -43,7 +43,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
             {convertToLocale({ amount: item_subtotal ?? 0, currency_code })}
           </span>
         </Box>
-        {!!discount_total && (
+        {/* {!!discount_total && (
           <Box className="flex items-center justify-between">
             <span>Discount</span>
             <span
@@ -55,9 +55,9 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
               {convertToLocale({ amount: discount_total ?? 0, currency_code })}
             </span>
           </Box>
-        )}
+        )} */}
         <Box className="flex items-center justify-between">
-          <span>Delivery</span>
+          <span>送料</span>
           <span
             className="text-lg text-basic-primary"
             data-value={shipping_total || 0}
@@ -65,7 +65,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
             {convertToLocale({ amount: shipping_total ?? 0, currency_code })}
           </span>
         </Box>
-        <Box className="flex items-center justify-between">
+        {/* <Box className="flex items-center justify-between">
           <span className="flex items-center gap-x-1">Taxes</span>
           <span
             data-value={tax_total || 0}
@@ -73,11 +73,11 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals }) => {
           >
             {convertToLocale({ amount: tax_total ?? 0, currency_code })}
           </span>
-        </Box>
+        </Box> */}
       </Box>
       <Divider />
       <Box className="flex items-center justify-between">
-        <span>Total</span>
+        <span>合計</span>
         <span
           className="text-xl font-semibold text-basic-primary"
           data-value={total || 0}

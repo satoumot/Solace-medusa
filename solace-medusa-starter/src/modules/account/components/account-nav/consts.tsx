@@ -11,27 +11,25 @@ export const profileNavItemsGroups = [
     {
       href: '/account',
       icon: <DashboardIcon className="h-6 w-6" />,
-      label: 'Dashboard',
+      label: 'マイページ',
       type: 'link',
     },
     {
       href: '/account/orders',
       icon: <BoxIcon className="h-6 w-6" />,
-      label: 'Order history',
+      label: '注文履歴',
       type: 'link',
     },
-  ],
-  [
-    {
-      href: '/account/addresses',
-      icon: <ShippingIcon className="h-6 w-6" />,
-      label: 'Shipping details',
-      type: 'link',
-    },
+    // {
+    //   href: '/account/addresses',
+    //   icon: <ShippingIcon className="h-6 w-6" />,
+    //   label: 'Shipping details',
+    //   type: 'link',
+    // },
     {
       href: '/account/profile',
       icon: <SettingsIcon className="h-6 w-6" />,
-      label: 'Account settings',
+      label: 'アカウント設定',
       type: 'link',
     },
   ],
@@ -40,7 +38,7 @@ export const profileNavItemsGroups = [
       href: '',
       type: 'logout',
       icon: <LogoutIcon className="h-6 w-6" />,
-      label: 'Log out',
+      label: 'ログアウト',
     },
   ],
 ]

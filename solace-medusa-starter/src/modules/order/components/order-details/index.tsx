@@ -22,7 +22,7 @@ const OrderDetails = ({ order }: OrderDetailsProps) => {
   return (
     <Box className="bg-primary p-2 medium:grid medium:grid-cols-[1fr,auto,1fr]">
       <Box className="p-4">
-        <Text size="large">Order status</Text>
+        <Text size="large">注文ステータス</Text>
         <Text size="base" className="text-secondary">
           {orderStatus}
         </Text>
@@ -31,7 +31,7 @@ const OrderDetails = ({ order }: OrderDetailsProps) => {
         <Divider alignment="vertical" />
       </Box>
       <Box className="p-4">
-        <Text size="large">Order date</Text>
+        <Text size="large">注文日</Text>
         <Text size="base" className="text-secondary">
           {formattedOrderDate}
         </Text>

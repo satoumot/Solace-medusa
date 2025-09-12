@@ -14,10 +14,10 @@ type SummaryProps = {
 }
 
 function getCheckoutStep(cart: HttpTypes.StoreCart) {
-  if (!cart?.shipping_address?.address_1 || !cart.email) {
-    return 'address'
-  } else if (cart?.shipping_methods?.length === 0) {
+  if (!cart?.shipping_address?.first_name || !cart.email) {
     return 'delivery'
+  } else if (cart?.shipping_methods?.length === 0) {
+    return 'address'
   } else {
     return 'payment'
   }
@@ -28,14 +28,14 @@ const Summary = ({ cart }: SummaryProps) => {
 
   return (
     <Box className="flex w-full flex-col gap-2 large:w-[326px] xl:w-[437px]">
-      <DiscountCode cart={cart} />
+      {/* <DiscountCode cart={cart} /> */}
       <Box className="flex flex-col gap-5 bg-primary p-5">
         <CartTotals totals={cart} />
         <LocalizedClientLink
           href={'/checkout?step=' + step}
           data-testid="checkout-button"
         >
-          <Button className="w-full">Proceed to checkout</Button>
+          <Button className="w-full bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]">お支払いへ進む</Button>
         </LocalizedClientLink>
       </Box>
     </Box>

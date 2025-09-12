@@ -23,27 +23,27 @@ import {
   XLogoIcon,
 } from '@modules/common/icons'
 
-function SocialMedia({ className }: { className?: string }) {
-  return (
-    <Box className={cn('flex gap-2', className)}>
-      <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-static">
-        <LocalizedClientLink href="#" data-testid="linkedin-link">
-          <LinkedinIcon />
-        </LocalizedClientLink>
-      </div>
-      <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-static">
-        <LocalizedClientLink href="#" data-testid="facebook-link">
-          <FacebookIcon />
-        </LocalizedClientLink>
-      </div>
-      <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-static">
-        <LocalizedClientLink href="#" data-testid="x-link">
-          <XLogoIcon />
-        </LocalizedClientLink>
-      </div>
-    </Box>
-  )
-}
+// function SocialMedia({ className }: { className?: string }) {
+//   return (
+//     <Box className={cn('flex gap-2', className)}>
+//       <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-static">
+//         <LocalizedClientLink href="#" data-testid="linkedin-link">
+//           <LinkedinIcon />
+//         </LocalizedClientLink>
+//       </div>
+//       <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-static">
+//         <LocalizedClientLink href="#" data-testid="facebook-link">
+//           <FacebookIcon />
+//         </LocalizedClientLink>
+//       </div>
+//       <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full text-static">
+//         <LocalizedClientLink href="#" data-testid="x-link">
+//           <XLogoIcon />
+//         </LocalizedClientLink>
+//       </div>
+//     </Box>
+//   )
+// }
 
 export default async function Footer({ countryCode }: { countryCode: string }) {
   const { product_categories } = await getCategoriesList()
@@ -52,10 +52,10 @@ export default async function Footer({ countryCode }: { countryCode: string }) {
   return (
     <Container
       as="footer"
-      className="mx-0 max-w-full border-t border-basic-primary bg-static px-0 py-0 small:px-0 small:py-0"
+      className="mx-0 max-w-full border-t border-basic-primary bg-[#666666] px-0 py-0 small:px-0 small:py-0"
     >
       <Container className="flex flex-col gap-6 text-static small:gap-12">
-        <Box className="flex flex-col gap-8 small:gap-12 large:flex-row xl:gap-0">
+        {/* <Box className="flex flex-col gap-8 small:gap-12 large:flex-row xl:gap-0">
           <Box className="flex flex-col justify-between xl:min-w-[437px]">
             <LocalizedClientLink
               href="#"
@@ -143,13 +143,13 @@ export default async function Footer({ countryCode }: { countryCode: string }) {
             })}
           </Accordion>
           <SocialMedia className="flex large:hidden" />
-        </Box>
-        <Divider alignment="horizontal" variant="secondary" />
-        <Box className="flex flex-wrap gap-6 gap-y-1">
-          <Text size="md" className="shrink-0 text-secondary">
-            © {new Date().getFullYear()} Solace. All rights reserved.
+        </Box> */}
+        {/* <Divider alignment="horizontal" variant="secondary" /> */}
+        {/* <Box className="flex flex-wrap gap-6 gap-y-1"> */}
+          <Text size="md" className="shrink-0 text-white text-center">
+            © {new Date().getFullYear()} SANSEIDO BOOKSTORE LTD. All rights reserved.
           </Text>
-          {footerNavigation.other.map((link, id) => (
+          {/* {footerNavigation.other.map((link, id) => (
             <NavigationItem
               key={`other-${id}`}
               variant="secondary"
@@ -159,8 +159,8 @@ export default async function Footer({ countryCode }: { countryCode: string }) {
             >
               {link.title}
             </NavigationItem>
-          ))}
-        </Box>
+          ))} */}
+        {/* </Box> */}
       </Container>
     </Container>
   )

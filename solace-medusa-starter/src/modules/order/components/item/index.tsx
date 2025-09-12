@@ -22,7 +22,8 @@ const Item = ({ item }: ItemProps) => {
           {item.product_title}
         </Text>
         <Text size="base" className="text-secondary">
-          {item.quantity} {item.quantity > 1 ? 'items' : 'item'}
+          {/* {item.quantity} {item.quantity > 1 ? 'items' : 'item'} */}
+          数量：{item.quantity}
         </Text>
         <LineItemPrice
           item={item}

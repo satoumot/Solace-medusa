@@ -28,10 +28,12 @@ export default function OrderCompletedTemplate({
               level="h1"
               className="text-xl font-normal text-basic-primary small:max-w-md medium:text-2xl"
             >
-              Thank you! Your order was placed successfully.
+              ご注文ありがとうございます。
+              <br />
+              ご注文は正常に完了いたしました。
             </Heading>
             <Text size="md" className="text-secondary">
-              We have sent the order confirmation details to {order.email}.
+              注文詳細につきましては {order.email} に後ほどお送りいたします。
             </Text>
           </Box>
           <OrderDetails order={order} />

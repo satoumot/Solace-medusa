@@ -19,27 +19,27 @@ services:
       - solace-net
 
   # Strapi CMS
-  cms:
-    build:
-      context: ./solace-medusa-starter-strapi
-      dockerfile: dockerfile.dev
-    container_name: solace_cms
-    restart: unless-stopped
-    ports:
-      - "1337:1337"
-    volumes:
-      - ./solace-medusa-starter-strapi/config:/opt/app/config
-      - ./solace-medusa-starter-strapi/src:/opt/app/src
-      - ./solace-medusa-starter-strapi/package.json:/opt/package.json
-      - ./solace-medusa-starter-strapi/package-lock.json:/opt/package-lock.json
-      - ./solace-medusa-starter-strapi/.env:/opt/app/.env
-      - ./solace-medusa-starter-strapi/public/uploads:/opt/app/public/uploads
-    env_file:
-      - ./solace-medusa-starter-strapi/.env
-    depends_on:
-      - postgres
-    networks:
-      - solace-net
+  # cms:
+  #   build:
+  #     context: ./solace-medusa-starter-strapi
+  #     dockerfile: dockerfile.dev
+  #   container_name: solace_cms
+  #   restart: unless-stopped
+  #   ports:
+  #     - "1337:1337"
+  #   volumes:
+  #     - ./solace-medusa-starter-strapi/config:/opt/app/config
+  #     - ./solace-medusa-starter-strapi/src:/opt/app/src
+  #     - ./solace-medusa-starter-strapi/package.json:/opt/package.json
+  #     - ./solace-medusa-starter-strapi/package-lock.json:/opt/package-lock.json
+  #     - ./solace-medusa-starter-strapi/.env:/opt/app/.env
+  #     - ./solace-medusa-starter-strapi/public/uploads:/opt/app/public/uploads
+  #   env_file:
+  #     - ./solace-medusa-starter-strapi/.env
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - solace-net
 
   # Next.js Storefront
   storefront:
@@ -57,7 +57,7 @@ services:
       - ./solace-medusa-starter/.env
     depends_on:
       - api
-      - cms
+      # - cms
     networks:
       - solace-net
 

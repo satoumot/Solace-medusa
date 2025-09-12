@@ -129,7 +129,7 @@ export default async function SearchResultsTemplate({
           </Box>
         )}
       </Container>
-      {recommendedProducts && (
+      {/* {recommendedProducts && (
         <Suspense fallback={<SkeletonProductsCarousel />}>
           <ProductCarousel
             products={recommendedProducts}
@@ -137,7 +137,7 @@ export default async function SearchResultsTemplate({
             title="Recommended products"
           />
         </Suspense>
-      )}
+      )} */}
     </>
   )
 }

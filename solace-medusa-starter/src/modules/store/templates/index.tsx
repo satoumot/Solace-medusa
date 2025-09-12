@@ -58,7 +58,7 @@ export default async function StoreTemplate({
   return (
     <>
       <Container className="flex flex-col gap-8 !pb-8 !pt-4">
-        <Box className="flex flex-col gap-4">
+        {/* <Box className="flex flex-col gap-4">
           <Text className="text-md text-secondary">
             {count === 1 ? `${count} product` : `${count} products`}
           </Text>
@@ -75,7 +75,7 @@ export default async function StoreTemplate({
             />
           </Box>
         </Box>
-        <ActiveProductFilters countryCode={countryCode} filters={filters} />
+        <ActiveProductFilters countryCode={countryCode} filters={filters} /> */}
         <Suspense fallback={<SkeletonProductGrid />}>
           {results && results.length > 0 ? (
             <PaginatedProducts
@@ -91,7 +91,7 @@ export default async function StoreTemplate({
           )}
         </Suspense>
       </Container>
-      {recommendedProducts && (
+      {/* {recommendedProducts && (
         <Suspense fallback={<SkeletonProductsCarousel />}>
           <ProductCarousel
             products={recommendedProducts}
@@ -99,7 +99,7 @@ export default async function StoreTemplate({
             title="Recommended products"
           />
         </Suspense>
-      )}
+      )} */}
     </>
   )
 }

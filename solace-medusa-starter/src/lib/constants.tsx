@@ -103,6 +103,10 @@ export const isPaypal = (providerId?: string) => {
 export const isManual = (providerId?: string) => {
   return providerId?.startsWith('pp_system_default')
 }
+export const isSbps = (providerId?: string) => {
+  // モックデータで 'sbps-creditcard' のように設定したので、'sbps-' で始まるかチェックします
+  return providerId?.startsWith('sbps-')
+}
 
 // Add currencies that don't need to be divided by 100
 export const noDivisionCurrencies = [
@@ -128,10 +132,10 @@ export const noDivisionCurrencies = [
 ]
 
 export const passwordRequirements = [
-  'At least 8 characters',
-  'One lowercase letter',
-  'One uppercase letter',
-  'One number or symbol',
+  '最低８文字以上',
+  '小文字１つ以上',
+  '大文字１つ以上',
+  '数字または記号１つ以上',
 ]
 
 export const createNavigation = (

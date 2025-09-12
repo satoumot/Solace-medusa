@@ -47,7 +47,7 @@ class Signin {
 
     await this.page.waitForLoadState('domcontentloaded')
 
-    const errorToast = this.page.getByText('Incorrect email or password.')
+    const errorToast = this.page.getByText('メールアドレスかパスワードが違います')
 
     expect(errorToast).toBeTruthy()
 

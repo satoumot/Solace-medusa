@@ -31,7 +31,8 @@ const ProfileDropdown = ({ loggedIn }: { loggedIn: boolean }) => {
     <Box className="z-50 h-full" onMouseEnter={open} onMouseLeave={close}>
       <Popover className="relative h-full">
         <Popover.Button
-          className="cursor-default rounded-full bg-transparent !p-2 text-action-primary outline-none hover:text-action-primary-hover active:bg-fg-secondary-pressed active:text-action-primary-pressed xsmall:!p-3.5 small:hover:bg-fg-secondary-hover"
+          // className="cursor-default rounded-full bg-transparent !p-2 text-action-primary outline-none hover:text-action-primary-hover active:bg-fg-secondary-pressed active:text-action-primary-pressed xsmall:!p-3.5 small:hover:bg-fg-secondary-hover"
+          className="cursor-default rounded-full bg-transparent !p-2 text-white outline-none hover:bg-white/10 xsmall:!p-3.5"
           data-testid="profile-dropdown-button"
         >
           <UserIcon />
@@ -52,7 +53,7 @@ const ProfileDropdown = ({ loggedIn }: { loggedIn: boolean }) => {
             data-testid={`${loggedIn ? 'profile-dropdown-logged-in' : 'profile-dropdown-logged-out'}`}
           >
             {loggedIn ? (
-              profileNavItemsGroups.slice(0, 2).map((group, groupIndex) => (
+              profileNavItemsGroups.slice(0, 1).map((group, groupIndex) => (
                 <Fragment key={groupIndex}>
                   <ul className="p-2">
                     {group.map((item) => (
@@ -87,14 +88,14 @@ const ProfileDropdown = ({ loggedIn }: { loggedIn: boolean }) => {
                   className="flex flex-col gap-2 p-2"
                   data-testid="profile-dropdown-sign-in-up"
                 >
-                  <Button size="sm" asChild>
+                  <Button size="sm" asChild className='bg-[#B8193F] hover:bg-[#D6355D] active:bg-[#A11637]'>
                     <LocalizedClientLink href="/account?mode=sign-in">
-                      Sign in
+                      ログイン
                     </LocalizedClientLink>
                   </Button>
                   <Button size="sm" asChild variant="tonal">
                     <LocalizedClientLink href="/account?mode=register">
-                      Sign up
+                      アカウント登録
                     </LocalizedClientLink>
                   </Button>
                 </Box>
@@ -102,9 +103,9 @@ const ProfileDropdown = ({ loggedIn }: { loggedIn: boolean }) => {
               </>
             )}
             <Box className="p-2">
-              <ThemeSwitcher />
-              <AccountNavLink href="#" icon={<HeadphonesIcon />}>
-                Support center
+              {/* <ThemeSwitcher /> */}
+              <AccountNavLink href="/contact" icon={<HeadphonesIcon />}>
+                お問い合わせ
               </AccountNavLink>
             </Box>
             {loggedIn && (
@@ -118,7 +119,7 @@ const ProfileDropdown = ({ loggedIn }: { loggedIn: boolean }) => {
                   >
                     <div className="flex items-center gap-4 p-4 text-lg">
                       <LogoutIcon />
-                      Log out
+                      ログアウト
                     </div>
                   </Button>
                 </Box>

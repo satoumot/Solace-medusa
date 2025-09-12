@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 
 import { retrieveCart } from '@lib/data/cart'
-import { getProductVariantsColors } from '@lib/data/fetch'
+// import { getProductVariantsColors } from '@lib/data/fetch'
 import { getProductsListByCollectionId } from '@lib/data/products'
 import { HttpTypes } from '@medusajs/types'
 import { Box } from '@modules/common/components/box'
@@ -27,7 +27,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   region,
   countryCode,
 }: ProductTemplateProps) => {
-  const variantsColors = await getProductVariantsColors()
+  // const variantsColors = await getProductVariantsColors()
 
   const { response: productsList } = await getProductsListByCollectionId({
     collectionId: product.collection_id,
@@ -58,7 +58,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = async ({
                 id={product.id}
                 region={region}
                 cartItems={cart?.items}
-                colors={variantsColors.data}
+                // colors={variantsColors.data}
               />
             </Suspense>
             <ProductTabs product={product} />

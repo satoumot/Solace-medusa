@@ -19,28 +19,27 @@ const CheckoutSummary = ({
     <Box className="relative">
       <Box className="sticky top-8 flex flex-col gap-y-4">
         <ItemsPreviewTemplate items={cart?.items} />
-        <DiscountCode cart={cart} />
+        {/* <DiscountCode cart={cart} /> */}
         <Box className="flex flex-col gap-5 bg-primary p-5">
           <CartTotals totals={cart} />
           {searchParams.step === 'payment' && (
             <Box className="flex flex-col gap-5">
               <PaymentButton cart={cart} data-testid="submit-order-button" />
-              <Box className="flex w-full">
+              <Box className="flex w-full justify-center">
                 <Text className="text-center text-sm text-secondary">
-                  By clicking the Place order button, you confirm that you have
-                  read, understand and accept our{' '}
-                  <LocalizedClientLink href="#" className="underline">
-                    Terms of Use
+                  {' '}
+                  <LocalizedClientLink href="/terms-and-conditions" className="underline">
+                    注文上の注意事項
                   </LocalizedClientLink>
-                  ,{' '}
+                  {/* ,{' '}
                   <LocalizedClientLink href="#" className="underline">
                     Terms of Sale
                   </LocalizedClientLink>{' '}
                   and{' '}
                   <LocalizedClientLink href="#" className="underline">
                     Returns Policy
-                  </LocalizedClientLink>
-                  .
+                  </LocalizedClientLink> */}
+                  をご覧ください。
                 </Text>
               </Box>
             </Box>

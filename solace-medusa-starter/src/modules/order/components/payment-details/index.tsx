@@ -13,14 +13,14 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
   return (
     <Box className="bg-primary p-2">
       <Box className="p-4">
-        <Text size="large">Delivery method</Text>
+        <Text size="large">受け取り方法</Text>
         <Text size="base" className="text-secondary">
           {order.shipping_methods[0].name}
         </Text>
       </Box>
 
       <Box className="p-4">
-        <Text size="large">Payment method</Text>
+        <Text size="large">支払い方法</Text>
         <Text size="base" className="text-secondary">
           {paymentInfoMap[payment.provider_id].title}
         </Text>

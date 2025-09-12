@@ -52,7 +52,7 @@ const ProfileEditDetails = ({
 
   useEffect(() => {
     if (isSuccess) {
-      toast('success', 'Profile details were updated.')
+      toast('success', 'アカウント情報が更新されました')
       close()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +67,7 @@ const ProfileEditDetails = ({
           className="w-fit medium:hidden"
           data-testid="edit-details-button"
         >
-          Edit details
+          編集
         </Button>
       </DialogTrigger>
       <DialogPortal>
@@ -81,7 +81,7 @@ const ProfileEditDetails = ({
             action={formAction}
           >
             <DialogHeader className="flex items-center text-xl medium:p-6 medium:text-2xl">
-              Edit profile details
+              アカウント情報編集
               <DialogClose className="right-4" />
             </DialogHeader>
             <VisuallyHidden.Root>
@@ -89,30 +89,30 @@ const ProfileEditDetails = ({
             </VisuallyHidden.Root>
             <DialogBody className="overflow-y-auto p-5">
               <div className="grid grid-cols-1 gap-4 medium:grid-cols-2">
-                <Input
-                  label="First name"
+               <Input
+                  label="苗字"
+                  name="last_name"
+                  required
+                  defaultValue={customer.last_name}
+                  data-testid="last-name-input"
+                />
+               <Input
+                  label="名前"
                   name="first_name"
                   required
                   defaultValue={customer.first_name}
                   data-testid="first-name-input"
                 />
                 <Input
-                  label="Last name"
-                  name="last_name"
-                  required
-                  defaultValue={customer.last_name}
-                  data-testid="last-name-input"
-                />
-                <Input
                   disabled
-                  label="Email"
+                  label="メールアドレス"
                   name="email"
                   required
                   defaultValue={customer.email}
                   data-testid="email-input"
                 />
                 <Input
-                  label="Phone number"
+                  label="大学CD"
                   name="phone"
                   required
                   defaultValue={customer.phone}
@@ -131,9 +131,9 @@ const ProfileEditDetails = ({
             <DialogFooter className="mt-auto">
               <SubmitButton
                 data-testid="save-details-button"
-                className="w-full"
+                className="w-full bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]"
               >
-                Save
+                保存
               </SubmitButton>
             </DialogFooter>
           </form>

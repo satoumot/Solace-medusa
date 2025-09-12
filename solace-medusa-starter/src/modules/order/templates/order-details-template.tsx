@@ -30,11 +30,11 @@ const OrderDetailsTemplate: React.FC<OrderDetailsTemplateProps> = ({
           data-testid="back-to-overview-button"
         >
           <ArrowLeftIcon />
-          Order history
+          注文履歴一覧
         </LocalizedClientLink>
       </Button>
       <Heading as="h2" className="text-2xl small:text-3xl">
-        Order #{order.display_id}
+        注文番号 #{order.display_id}
       </Heading>
       <Box
         className="flex h-full w-full flex-col gap-4"

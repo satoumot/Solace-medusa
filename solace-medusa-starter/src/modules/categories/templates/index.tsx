@@ -97,7 +97,7 @@ export default async function CategoryTemplate({
           )}
         </Suspense>
       </Container>
-      {recommendedProducts && (
+      {/* {recommendedProducts && (
         <Suspense fallback={<SkeletonProductsCarousel />}>
           <ProductCarousel
             products={recommendedProducts}
@@ -105,7 +105,7 @@ export default async function CategoryTemplate({
             title="Recommended products"
           />
         </Suspense>
-      )}
+      )} */}
     </>
   )
 }

@@ -23,30 +23,30 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
     <Box className="flex flex-col gap-5 bg-primary p-5 text-md">
       <Box className="flex flex-col gap-2">
         <Box className="flex items-center justify-between">
-          <span className="text-secondary">Items</span>
+          <span className="text-secondary">小計</span>
           <span className="text-lg text-basic-primary">
             {getAmount(order.item_total)}
           </span>
         </Box>
         <Box className="flex flex-col gap-2">
-          {order.discount_total > 0 && (
+          {/* {order.discount_total > 0 && (
             <Box className="flex items-center justify-between">
               <span className="text-secondary">Discount</span>
               <span className="text-negative">
                 - {getAmount(order.discount_total)}
               </span>
             </Box>
-          )}
-          {order.gift_card_total > 0 && (
+          )} */}
+          {/* {order.gift_card_total > 0 && (
             <Box className="flex items-center justify-between">
               <span className="text-secondary">Discount</span>
               <span className="text-negative">
                 - {getAmount(order.gift_card_total)}
               </span>
             </Box>
-          )}
+          )} */}
           <Box className="flex items-center justify-between">
-            <span className="text-secondary">Shipping</span>
+            <span className="text-secondary">送料</span>
             <span className="text-basic-primary">
               {getAmount(order.shipping_total)}
             </span>
@@ -55,7 +55,7 @@ const OrderSummary = ({ order }: OrderSummaryProps) => {
       </Box>
       <Divider />
       <Box className="flex items-center justify-between">
-        <span className="text-secondary">Total</span>
+        <span className="text-secondary">合計</span>
         <span className="text-xl font-medium text-basic-primary">
           {getAmount(order.total)}
         </span>

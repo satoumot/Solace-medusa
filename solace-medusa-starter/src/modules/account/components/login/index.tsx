@@ -35,7 +35,7 @@ const Login = ({ setCurrentView }: Props) => {
       if (!formData.get(field)) {
         errors.push({
           field,
-          message: 'Please enter',
+          message: '入力してください',
         })
       }
     }
@@ -63,7 +63,7 @@ const Login = ({ setCurrentView }: Props) => {
   useEffect(() => {
     if (localMessage) {
       if (localMessage.includes('Invalid email or password')) {
-        toast('error', 'Incorrect email or password.')
+        toast('error', 'メールアドレスかパスワードが違います')
       } else if (localMessage.includes('Password should be a string')) {
         return
       } else {
@@ -80,12 +80,12 @@ const Login = ({ setCurrentView }: Props) => {
     >
       <Box className="flex w-full flex-col gap-6 bg-primary p-4 small:p-5">
         <Heading as="h2" className="text-xl small:text-2xl">
-          Log in
+          ログイン
         </Heading>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-y-4">
             <Input
-              label="Email"
+              label="メールアドレス"
               name="email"
               type="email"
               autoComplete="email"
@@ -97,7 +97,7 @@ const Login = ({ setCurrentView }: Props) => {
               data-testid="email-input"
             />
             <Input
-              label="Password"
+              label="パスワード"
               name="password"
               type="password"
               autoComplete="current-password"
@@ -109,16 +109,16 @@ const Login = ({ setCurrentView }: Props) => {
               data-testid="password-input"
             />
           </div>
-          <Box className="flex flex-col gap-4">
-            <SubmitButton data-testid="sign-in-button" className="mt-6 w-full">
-              Continue with email
+          <Box className="flex flex-col gap-4 ">
+            <SubmitButton data-testid="sign-in-button" className="mt-6 w-full bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]">
+              ログイン
             </SubmitButton>
             <Button
               variant="text"
               className="w-full"
               onClick={() => setCurrentView(LOGIN_VIEW.FORGOT_PASSWORD)}
             >
-              Forgot password
+              パスワードを忘れた場合はこちら
             </Button>
           </Box>
         </form>

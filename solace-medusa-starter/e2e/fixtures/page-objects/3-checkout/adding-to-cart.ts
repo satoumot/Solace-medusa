@@ -114,7 +114,7 @@ class AddToCart {
 
     await this.page.getByTestId('delete-button').click()
 
-    const toast = await this.page.getByText('Product was removed from cart.')
+    const toast = await this.page.getByText('カートから削除されました')
 
     expect(toast).toBeTruthy()
 

@@ -99,7 +99,7 @@ export default async function CollectionTemplate({
           )}
         </Suspense>
       </Container>
-      {recommendedProducts && (
+      {/* {recommendedProducts && (
         <Suspense fallback={<SkeletonProductsCarousel />}>
           <ProductCarousel
             products={recommendedProducts}
@@ -107,7 +107,7 @@ export default async function CollectionTemplate({
             title="Recommended products"
           />
         </Suspense>
-      )}
+      )} */}
     </>
   )
 }

@@ -11,14 +11,14 @@ const EmptyCartMessage = () => {
       <BagIcon className="h-14 w-14" />
       <Box className="flex flex-col items-center gap-2">
         <Heading as="h2" className="text-xl small:text-2xl">
-          Your shopping cart is empty
+          カートが空です
         </Heading>
-        <Text size="md" className="text-secondary">
+        {/* <Text size="md" className="text-secondary">
           Are you looking for inspiration?
-        </Text>
+        </Text> */}
       </Box>
       <Button asChild>
-        <LocalizedClientLink href="/">Explore Home Page</LocalizedClientLink>
+        <LocalizedClientLink href="/shop">商品を見る</LocalizedClientLink>
       </Button>
     </Box>
   )

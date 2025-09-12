@@ -39,22 +39,22 @@ const Register = ({ setCurrentView }: Props) => {
     const errors: ValidationError[] = []
 
     // Check if all required fields are filled
-    const requiredFields = ['first_name', 'last_name', 'email', 'password']
+    const requiredFields = ['first_name', 'last_name', 'email', 'password', 'collegeCD']
     for (const field of requiredFields) {
       if (!formData.get(field)) {
         errors.push({
           field,
-          message: 'Please enter',
+          message: '入力してください',
         })
       }
     }
 
-    if (!isReadAgreements) {
-      errors.push({
-        field: 'is_read_agreements',
-        message: 'Please agree to Terms & Conditions and Privacy Policy',
-      })
-    }
+    // if (!isReadAgreements) {
+    //   errors.push({
+    //     field: 'is_read_agreements',
+    //     message: 'Please agree to Terms & Conditions and Privacy Policy',
+    //   })
+    // }
 
     // Check password requirements
     const password = formData.get('password') as string
@@ -96,7 +96,7 @@ const Register = ({ setCurrentView }: Props) => {
       if (localMessage.includes('Identity with email already exists')) {
         toast(
           'error',
-          'It seems the email you entered is already associated with another account. Please log in instead.'
+          'そのメールアドレスは既に使われているため、ログインしてください'
         )
       } else if (localMessage.includes('Password should be a string')) {
         return
@@ -114,24 +114,14 @@ const Register = ({ setCurrentView }: Props) => {
     >
       <Box className="flex w-full flex-col gap-6 bg-primary p-4 small:p-5">
         <Heading as="h2" className="text-xl small:text-2xl">
-          Create account
+          アカウント登録
         </Heading>
         <form className="flex w-full flex-col" onSubmit={handleSubmit}>
           <Box className="flex w-full flex-col gap-y-4">
             <Box className="grid grid-cols-1 gap-4 small:grid-cols-2">
+
               <Input
-                label="First Name"
-                name="first_name"
-                required
-                autoComplete="given-name"
-                error={
-                  validationErrors.find((error) => error.field === 'first_name')
-                    ?.message
-                }
-                data-testid="first-name-input"
-              />
-              <Input
-                label="Last Name"
+                label="苗字"
                 name="last_name"
                 required
                 autoComplete="family-name"
@@ -141,10 +131,21 @@ const Register = ({ setCurrentView }: Props) => {
                 }
                 data-testid="last-name-input"
               />
+              <Input
+                label="名前"
+                name="first_name"
+                required
+                autoComplete="given-name"
+                error={
+                  validationErrors.find((error) => error.field === 'first_name')
+                    ?.message
+                }
+                data-testid="first-name-input"
+              />
             </Box>
             <Box className="grid grid-cols-1 gap-4 small:grid-cols-2">
               <Input
-                label="Email"
+                label="メールアドレス"
                 name="email"
                 required
                 type="email"
@@ -156,15 +157,20 @@ const Register = ({ setCurrentView }: Props) => {
                 data-testid="email-input"
               />
               <Input
-                label="Phone number"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
+                label="大学CD"
+                name="collegeCD"
+                type="text"
+                autoComplete="off"
+                error={
+                  validationErrors.find((error) => error.field === 'email')
+                    ?.message
+                }
                 data-testid="phone-input"
+                
               />
             </Box>
             <Input
-              label="Password"
+              label="パスワード"
               name="password"
               required
               type="password"
@@ -204,7 +210,7 @@ const Register = ({ setCurrentView }: Props) => {
               })}
             </Box>
           </Box>
-          <Box className="mt-6 flex items-center gap-x-2">
+          {/* <Box className="mt-6 flex items-center gap-x-2">
             <Checkbox
               id="is_read_agreements"
               name="is_read_agreements"
@@ -220,23 +226,23 @@ const Register = ({ setCurrentView }: Props) => {
               htmlFor="is_read_agreements"
               className="cursor-pointer !text-md"
             >
-              I read and agree to{' '}
+              以下を読んで同意しました（{' '}
               <LocalizedClientLink
                 href="/terms-and-conditions"
                 className="w-max transition-all duration-200 hover:underline"
               >
-                Terms & Conditions
+                規約
               </LocalizedClientLink>{' '}
-              and{' '}
+              と{' '}
               <LocalizedClientLink
                 href="/privacy-policy"
                 className="w-max transition-all duration-200 hover:underline"
               >
-                Privacy Policy
+                プライバシーポリシー
               </LocalizedClientLink>
-              .
+              ）
             </Label>
-          </Box>
+          </Box> */}
           {validationErrors.find(
             (error) => error.field === 'is_read_agreements'
           ) && (
@@ -249,8 +255,8 @@ const Register = ({ setCurrentView }: Props) => {
               data-testid="agreements-error"
             />
           )}
-          <SubmitButton className="mt-6 w-full" data-testid="register-button">
-            Create account
+          <SubmitButton className="mt-6 w-full bg-[#B8193F] hover:bg-[#D6355D] active:bg-[#A11637]" data-testid="register-button">
+            アカウント登録
           </SubmitButton>
         </form>
       </Box>

@@ -10,7 +10,7 @@ export const BagIcon = (props: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <title>Bag icon</title>
+      {/* <title>Bag icon</title> */}
       <path
         d="M6.6598 18.7083C7.433 18.7083 8.0598 18.0554 8.0598 17.25C8.0598 16.4446 7.433 15.7917 6.6598 15.7917C5.88661 15.7917 5.2598 16.4446 5.2598 17.25C5.2598 18.0554 5.88661 18.7083 6.6598 18.7083Z"
         fill="currentColor"

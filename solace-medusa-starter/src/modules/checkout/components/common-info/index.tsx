@@ -12,7 +12,7 @@ import { initiatePaymentSession, setAddresses } from '@lib/data/cart'
 import { useCheckoutForms } from '@lib/hooks/use-checkout-forms'
 import compareAddresses from '@lib/util/addresses'
 import { HttpTypes } from '@medusajs/types'
-// import { useToggleState } from '@medusajs/ui'
+import { useToggleState } from '@medusajs/ui'
 import { Box } from '@modules/common/components/box'
 import { Button } from '@modules/common/components/button'
 import Divider from '@modules/common/components/divider'
@@ -21,11 +21,12 @@ import { Stepper } from '@modules/common/components/stepper'
 import { Text } from '@modules/common/components/text'
 import { Spinner } from '@modules/common/icons'
 
-import BillingAddress from '../billing_address'
-import ShippingAddress from '../shipping-address'
+// import BillingAddress from '../billing_address'
+// import ShippingAddress from '../shipping-address'
+import CommonInfo from '../common'
 import { SubmitButton } from '../submit-button'
 
-const Addresses = ({
+const Common = ({
   cart,
   customer,
 }: {
@@ -37,54 +38,55 @@ const Addresses = ({
   const router = useRouter()
   const pathname = usePathname()
 
-  const isOpen = searchParams.get('step') === 'address'
+  const isOpen = searchParams.get('step') === 'delivery'
 
   const handleEdit = () => {
-    router.push(pathname + '?step=address')
+    router.push(pathname + '?step=delivery')
   }
 
-  // const { state: sameAsShipping, toggle: originalToggleSameAsShipping } =
-  //   useToggleState(
-  //     cart?.shipping_address && cart?.billing_address
-  //       ? compareAddresses(cart?.billing_address, cart?.shipping_address)
-  //       : true
-  //   )
+  const { state: sameAsShipping, toggle: originalToggleSameAsShipping } =
+    useToggleState(
+      cart?.shipping_address && cart?.billing_address
+        ? compareAddresses(cart?.billing_address, cart?.shipping_address)
+        : true
+    )
 
   const initialValues = {
     shipping_address: cart?.shipping_address || {
       first_name: '',
       last_name: '',
-      address_1: '',
-      company: '',
-      postal_code: '',
-      city: '',
-      country_code:
-        params.countryCode || cart?.shipping_address?.country_code || '',
-      province: '',
+    //   address_1: '',
+    //   address_2: '',
+    //   company: '',
+    //   postal_code: '',
+    //   city: '',
+    //   country_code:
+        // params.countryCode || cart?.shipping_address?.country_code || '',
+    //   province: '',
       phone: '',
     },
-    billing_address: cart?.billing_address || {
-      first_name: '',
-      last_name: '',
-      address_1: '',
-      company: '',
-      postal_code: '',
-      city: '',
-      country_code: cart?.shipping_address?.country_code ?? '',
-      province: '',
-      phone: '',
-    },
+    // billing_address: cart?.billing_address || {
+    //   first_name: '',
+    //   last_name: '',
+    //   address_1: '',
+    //   company: '',
+    //   postal_code: '',
+    //   city: '',
+    //   country_code: cart?.shipping_address?.country_code ?? '',
+    //   province: '',
+    //   phone: '',
+    // },
     email: cart?.email || customer?.email || '',
-    same_as_shipping: true,
+    // same_as_shipping: sameAsShipping,
   }
 
   const checkout = useCheckoutForms(initialValues)
   const [, formAction] = useActionState(setAddresses, null)
 
-  // const toggleSameAsShipping = (value: boolean) => {
-  //   originalToggleSameAsShipping()
-  //   checkout.setFieldValue('same_as_shipping', value)
-  // }
+//   const toggleSameAsShipping = (value: boolean) => {
+//     originalToggleSameAsShipping()
+//     checkout.setFieldValue('same_as_shipping', value)
+//   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -108,9 +110,10 @@ const Addresses = ({
         // )
 
         formData.append('email', checkout.values.email)
-        formData.append(
-          'same_as_shipping','on'
-        )
+        // formData.append(
+        //   'same_as_shipping',
+        //   checkout.values.same_as_shipping ? 'on' : 'off'
+        // )
 
         const activeSession = cart?.payment_collection?.payment_sessions?.find(
           (paymentSession: any) => paymentSession.status === 'pending'
@@ -126,6 +129,8 @@ const Addresses = ({
               })
             : Promise.resolve(),
         ])
+
+        router.push(pathname + '?step=address', { scroll: false })
       }
     } catch (error) {
       console.error('Error:', error)
@@ -144,7 +149,7 @@ const Addresses = ({
           ) : (
             <Stepper state="completed" />
           )}
-          配送先住所および本人情報
+          基本情報
         </Heading>
         {!isOpen && cart?.shipping_address && (
           <Button
@@ -153,20 +158,20 @@ const Addresses = ({
             onClick={handleEdit}
             data-testid="edit-address-button"
           >
-            編集
+            Edit
           </Button>
         )}
       </Box>
       {isOpen ? (
         <form onSubmit={handleSubmit}>
           <Box>
-            <ShippingAddress
+            <CommonInfo
               customer={customer}
               cart={cart}
               formik={checkout}
-              // checked={sameAsShipping}
+              checked={sameAsShipping}
               values={checkout.values}
-              // onChange={toggleSameAsShipping}
+            //   onChange={toggleSameAsShipping}
               handleChange={checkout.handleChange}
               errors={checkout.errors}
             />
@@ -189,7 +194,7 @@ const Addresses = ({
               className="mt-6 bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]"
               data-testid="submit-address-button"
             >
-              受け取り方法の選択へ進む
+              受け取り方法へ進む
             </SubmitButton>
           </Box>
         </form>
@@ -205,24 +210,23 @@ const Addresses = ({
                     data-testid="shipping-address-summary"
                   >
                     <Text size="lg" className="text-basic-primary">
-                      配送先住所および本人情報
+                      基本情報
                     </Text>
                     <Text className="text-secondary">
-                      {cart.shipping_address.last_name}{' '}
-                      {cart.shipping_address.first_name}
+                      {cart.shipping_address.first_name}{' '}
+                      {cart.shipping_address.last_name}
                     </Text>
-                    <Text className="text-secondary">
-                      {/* {cart.shipping_address.company &&
-                        `${cart.shipping_address.company}, `} */}
+                    {/* <Text className="text-secondary">
+                      {cart.shipping_address.company &&
+                        `${cart.shipping_address.company}, `}
+                      {cart.shipping_address.address_1},{' '}
                       {cart.shipping_address.postal_code},{' '}
+                      {cart.shipping_address.city},{' '}
+                      {cart.shipping_address.country_code?.toUpperCase()}
                       {cart.shipping_address?.province &&
                         `, ${cart.shipping_address.province}`}
-                      {cart.shipping_address.city},{' '}
-                      {cart.shipping_address.address_1},{' '}
-                      {cart.shipping_address.address_2},{' '}
-                      {/* {cart.shipping_address.country_code?.toUpperCase()} */}
                       ,
-                    </Text>
+                    </Text> */}
                     <Text className="text-secondary">
                       {cart.email}, {cart.shipping_address?.phone}
                     </Text>
@@ -238,9 +242,9 @@ const Addresses = ({
                     {sameAsShipping ? (
                       <Text className="text-secondary">
                         Same as shipping address
-                      </Text>
-                    ) : (
-                      <>
+                      </Text> */}
+                    {/* ) : ( */}
+                      {/* <>
                         <Text className="text-secondary">
                           {cart.billing_address.first_name}{' '}
                           {cart.billing_address.last_name}
@@ -259,9 +263,9 @@ const Addresses = ({
                         </Text>
                       </>
                     )}
-                  </div> */}
+                  </div>*/}
                 </div>
-              </div>
+              </div> 
             ) : (
               <div>
                 <Spinner />
@@ -273,4 +277,4 @@ const Addresses = ({
     </Box>
   )
 }
-export default Addresses
+export default Common

@@ -18,14 +18,14 @@ export default function NavContent(props: any) {
 
   return (
     <>
-      <Box className="flex large:hidden">
+      {/* <Box className="flex large:hidden">
         <SideMenu
           productCategories={props.productCategories}
           collections={props.collections}
           strapiCollections={props.strapiCollections}
         />
-      </Box>
-      {!isSearchOpen && (
+      </Box> */}
+      {/* {!isSearchOpen && (
         <Navigation
           countryCode={props.countryCode}
           productCategories={props.productCategories}
@@ -46,7 +46,7 @@ export default function NavContent(props: any) {
         countryCode={props.countryCode}
         isOpen={isSearchOpen}
         handleOpenDialogChange={setIsSearchOpen}
-      />
+      /> */}
       <Box
         className={cn('relative block', {
           'medium:absolute medium:left-1/2 medium:top-1/2 medium:-translate-x-1/2 medium:-translate-y-1/2':
@@ -54,11 +54,14 @@ export default function NavContent(props: any) {
           'right-0 z-40': isSearchOpen,
         })}
       >
-        <LocalizedClientLink href="/">
-          <SolaceLogo className="h-6 medium:h-7" />
+        <LocalizedClientLink href="/shop">
+          {/* <SolaceLogo className="h-6 medium:h-7" /> */}
+          <span className="text-xl font-bold">
+          三省堂書店　学校オンラインストア
+          </span>
         </LocalizedClientLink>
       </Box>
-      {!isSearchOpen && (
+      {/* {!isSearchOpen && (
         <Button
           variant="icon"
           withIcon
@@ -68,7 +71,7 @@ export default function NavContent(props: any) {
         >
           <SearchIcon />
         </Button>
-      )}
+      )} */}
     </>
   )
 }

@@ -52,13 +52,13 @@ export default async function Cart(props: {
   return (
     <Container className="max-w-full bg-secondary !p-0">
       <CartTemplate cart={cart} />
-      <Suspense fallback={<SkeletonProductsCarousel />}>
+      {/* <Suspense fallback={<SkeletonProductsCarousel />}>
         <ProductCarousel
           products={products}
-          title="You may also like"
+          title="おすすめ"
           regionId={region.id}
         />
-      </Suspense>
+      </Suspense> */}
     </Container>
   )
 }

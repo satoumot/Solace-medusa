@@ -33,8 +33,12 @@ export default function ProductTabs({ product }: ProductTabsProps) {
 
   const tabs = [
     {
-      label: 'Description',
+      label: '商品説明',
       component: <ProductDescriptionTab description={product.description} />,
+    },
+    {
+      label: '商品情報', // タブのタイトル
+      component: <ProductInfoTab product={product} />, // 作成したコンポーネント
     },
     Object.entries(dimensions).length > 0 && {
       label: 'Dimensions',
@@ -44,10 +48,10 @@ export default function ProductTabs({ product }: ProductTabsProps) {
       label: 'Design',
       component: <ProductDesignTab design={design} />,
     },
-    {
-      label: 'Shipping & Returns',
-      component: <ShippingInfoTab />,
-    },
+    // {
+    //   label: 'Shipping & Returns',
+    //   component: <ShippingInfoTab />,
+    // },
   ].filter(Boolean)
 
   return (
@@ -166,3 +170,32 @@ const formatKey = (key: string, prefix: string): string => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
+
+const mockProductInfo = {
+  metadata: {
+    spec_grade: '１年次',
+    spec_class: '５組',
+    spec_day_period: '火曜２限',
+    spec_subject: '生命工学',
+    spec_teacher: '山田太郎',
+    spec_publisher: 'ABC書店',
+  },
+};
+const ProductInfoTab = ({ product }: { product: HttpTypes.StoreProduct }) => {
+  // 実際のデータとモックデータをマージ
+  const metadata = { ...mockProductInfo.metadata, ...(product.metadata || {}) };
+
+  return (
+    <Box data-testid="product-info-tab">
+      <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm">
+        {/* データがない場合もモックの値が表示されるように条件分岐を削除 */}
+        <div><Text as="span" className="font-semibold">学年:</Text> {metadata.spec_grade as string}</div>
+        <div><Text as="span" className="font-semibold">組:</Text> {metadata.spec_class as string}</div>
+        <div><Text as="span" className="font-semibold">曜日時限:</Text> {metadata.spec_day_period as string}</div>
+        <div><Text as="span" className="font-semibold">科目名:</Text> {metadata.spec_subject as string}</div>
+        <div><Text as="span" className="font-semibold">先生:</Text> {metadata.spec_teacher as string}</div>
+        <div><Text as="span" className="font-semibold">出版社:</Text> {metadata.spec_publisher as string}</div>
+      </div>
+    </Box>
+  );
+};

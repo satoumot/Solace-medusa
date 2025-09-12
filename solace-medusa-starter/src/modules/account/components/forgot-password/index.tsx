@@ -53,13 +53,14 @@ const ForgotPassword = ({ setCurrentView }: Props) => {
           <SearchResultsIcon />
           <Box className="text-center">
             <Heading className="mb-2 text-xl small:text-2xl">
-              Check your inbox
+              メールを確認してください
             </Heading>
             <Text className="text-secondary" size="md">
-              A password reset has been requested for {email}. If this email is
-              associated with any existing account, reset instructions will be
-              sent shortly. Check your inbox and spam folder. Remember, the link
-              is only active for one hour.
+              リセットメールは {email} 宛に送信されました。
+              ご入力のメールアドレスがアカウントに登録されている場合、
+              まもなくパスワード再設定のご案内をお送りします。
+              受信トレイと迷惑メールフォルダをご確認ください。
+              なお、リンクの有効期限は1時間です。
             </Text>
           </Box>
         </>
@@ -67,16 +68,15 @@ const ForgotPassword = ({ setCurrentView }: Props) => {
         <>
           <Box className="flex flex-col gap-2">
             <Heading className="text-xl small:text-2xl">
-              Forgot your password?
+              パスワードを忘れてしまった場合
             </Heading>
             <Text className="text-secondary" size="md">
-              Enter the email you used to sign up and we’ll send you a password
-              reset email.
+              ログイン用のメールアドレスを入力してください。リセットメールをお送りします。
             </Text>
           </Box>
           <form onSubmit={handleSubmit}>
             <Input
-              label="Email"
+              label="メールアドレス"
               name="email"
               type="email"
               autoComplete="email"
@@ -87,16 +87,16 @@ const ForgotPassword = ({ setCurrentView }: Props) => {
             <Box className="flex flex-col gap-4">
               <SubmitButton
                 data-testid="sign-in-button"
-                className="mt-6 w-full"
+                className="mt-6 w-full bg-[#B8193F] hover:bg-[#D6355D] active:bg-[#A11637]"
               >
-                Reset password
+                リセットメールを送信
               </SubmitButton>
               <Button
                 variant="text"
                 className="w-full"
                 onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
               >
-                Back to log in
+                ログインに戻る
               </Button>
             </Box>
           </form>
