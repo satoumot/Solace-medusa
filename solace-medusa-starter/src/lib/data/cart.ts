@@ -168,7 +168,7 @@ export async function addToCartCheapestVariant({
 
     return {
       success: true,
-      message: 'Product added to cart',
+      message: 'カートに追加されました',
     }
   } catch (error) {
     console.error('Error adding product to cart:', error)

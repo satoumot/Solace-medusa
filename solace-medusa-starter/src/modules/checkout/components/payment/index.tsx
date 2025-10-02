@@ -104,7 +104,7 @@ const Payment = ({
       await initiatePaymentSession(cart, {
         provider_id: paymentMethodId,
       })
-      router.push(pathname + '?step=address') 
+      // router.push(pathname + '?step=address') 
     } catch (err: any) {
       setError(err.message)
     } finally {
@@ -141,11 +141,11 @@ const Payment = ({
           })}
         >
           {!isOpen && !paymentReady ? (
-            <Stepper>2</Stepper>
+            <Stepper>3</Stepper>
           ) : !isOpen && paymentReady ? (
             <Stepper state="completed" />
           ) : (
-            <Stepper state="focussed">2</Stepper>
+            <Stepper state="focussed">3</Stepper>
           )}
           支払い方法
         </Heading>

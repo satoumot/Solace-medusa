@@ -126,6 +126,7 @@ const Addresses = ({
               })
             : Promise.resolve(),
         ])
+        router.push(pathname + '?step=delivery') 
       }
     } catch (error) {
       console.error('Error:', error)

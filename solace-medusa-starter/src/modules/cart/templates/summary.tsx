@@ -32,7 +32,8 @@ const Summary = ({ cart }: SummaryProps) => {
       <Box className="flex flex-col gap-5 bg-primary p-5">
         <CartTotals totals={cart} />
         <LocalizedClientLink
-          href={'/checkout?step=' + step}
+          href={'/checkout?step=address'}
+          // href={'/checkout?step=' + step}
           data-testid="checkout-button"
         >
           <Button className="w-full bg-[#B8193F]　hover:bg-[#D6355D] active:bg-[#A11637]">お支払いへ進む</Button>

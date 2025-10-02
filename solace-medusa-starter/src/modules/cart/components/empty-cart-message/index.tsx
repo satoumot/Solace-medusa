@@ -17,7 +17,7 @@ const EmptyCartMessage = () => {
           Are you looking for inspiration?
         </Text> */}
       </Box>
-      <Button asChild>
+      <Button asChild className='bg-[#B8193F] hover:bg-[#D6355D] active:bg-[#A11637]'>
         <LocalizedClientLink href="/shop">商品を見る</LocalizedClientLink>
       </Button>
     </Box>

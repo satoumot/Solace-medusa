@@ -216,7 +216,7 @@ const CartDropdown = ({
                     Are you looking for inspiration?
                   </Text> */}
                 </Box>
-                <Button onClick={closeCartDropdown} asChild className="w-full">
+                <Button onClick={closeCartDropdown} asChild className="w-full bg-[#B8193F] hover:bg-[#D6355D] active:bg-[#A11637]">
                   <LocalizedClientLink href="/shop">
                     商品を見る
                   </LocalizedClientLink>

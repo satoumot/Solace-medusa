@@ -7,5 +7,8 @@ npx medusa db:migrate
 echo "Seeding database..."
 yarn seed || echo "Seeding failed, continuing..."
 
+echo "Creating admin user..."
+npx medusa user -e admin@example.com -p supersecret -i admin || echo "Admin user creation failed or already exists"
+
 echo "Starting Medusa development server..."
 yarn dev
