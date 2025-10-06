@@ -11,14 +11,14 @@ export default function RegisterPrompt({
   return (
     <Box className="flex w-full flex-col gap-6 bg-primary p-4 small:p-5">
       <Heading as="h2" className="text-xl small:text-2xl">
-        アカウントをお持ちでない方はこちら
+        会員でない方はこちら
       </Heading>
       <Button
         variant="tonal"
         className="w-full"
         onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
       >
-        アカウント登録
+        会員登録
       </Button>
     </Box>
   )

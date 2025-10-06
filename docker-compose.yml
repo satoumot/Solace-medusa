@@ -1,20 +1,59 @@
 services:
   # Medusa API Backend
-  api:
+  # api:
+  #   build:
+  #     context: ./solace-medusa-starter-api
+  #     dockerfile: Dockerfile.dev
+  #   container_name: solace_api
+  #   ports:
+  #     - "9000:9000"
+  #   volumes:
+  #     - ./solace-medusa-starter-api:/app
+  #     - /app/node_modules
+  #   env_file:
+  #     - ./solace-medusa-starter-api/.env
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #   networks:
+  #     - solace-net
+  backend:
     build:
-      context: ./solace-medusa-starter-api
-      dockerfile: Dockerfile.dev
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: solace_api
     ports:
       - "9000:9000"
     volumes:
-      - ./solace-medusa-starter-api:/app
+      - ./backend:/app
       - /app/node_modules
     env_file:
-      - ./solace-medusa-starter-api/.env
+      - ./backend/.env
     depends_on:
       - postgres
       - redis
+    networks:
+      - solace-net
+  # Medusa Admin Dashboard
+  admin-dashboard:
+    build: ./admin-dashboard
+    container_name: solace_dashboard
+    restart: unless-stopped
+    depends_on:
+      - backend
+    env_file:
+      - ./admin-dashboard/.env
+    environment:
+      - VITE_MEDUSA_BACKEND_URL=http://localhost:9000
+      - VITE_MEDUSA_PROJECT=/backend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./admin-dashboard:/app
+      - ./backend:/backend
+      - /app/node_modules
+    command: >
+      sh -c "npm run dev -- --host 0.0.0.0 --port 5173"
     networks:
       - solace-net
 
@@ -56,7 +95,7 @@ services:
     env_file:
       - ./solace-medusa-starter/.env
     depends_on:
-      - api
+      - backend
       # - cms
     networks:
       - solace-net
@@ -68,9 +107,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: medusa_user
-      POSTGRES_PASSWORD: medusa_password
-      POSTGRES_DB: medusa_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: medusa-store
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:

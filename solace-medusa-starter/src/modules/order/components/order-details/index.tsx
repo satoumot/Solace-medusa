@@ -11,12 +11,12 @@ type OrderDetailsProps = {
 const OrderDetails = ({ order }: OrderDetailsProps) => {
   const orderStatus = getOrderStatus(order.status)
   const formattedOrderDate = new Date(order.created_at).toLocaleDateString(
-    'en-US',
-    {
-      month: 'short',
-      day: '2-digit',
-      year: 'numeric',
-    }
+    'ja-JP-u-ca-japanese',
+    // {
+    //   month: 'short',
+    //   day: '2-digit',
+    //   year: 'numeric',
+    // }
   )
 
   return (

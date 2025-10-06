@@ -1,7 +1,7 @@
 export const getOrderStatus = (status: string) => {
   switch (status) {
     case 'pending':
-      return 'Pending'
+      return '待機中'
     case 'completed':
       return 'Completed'
     case 'requires_action':

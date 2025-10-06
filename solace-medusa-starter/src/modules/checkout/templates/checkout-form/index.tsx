@@ -6,6 +6,7 @@ import Payment from '@modules/checkout/components/payment'
 import Shipping from '@modules/checkout/components/shipping'
 import Common from '@modules/checkout/components/common-info'
 import { Box } from '@modules/common/components/box'
+import ShippingAddress from '@modules/checkout/components/shipping-address'
 
 export default async function CheckoutForm({
   cart,
@@ -22,24 +23,29 @@ export default async function CheckoutForm({
   const paymentMethods = await listCartPaymentMethods(cart.region?.id ?? '')
 //   const paymentMethods = [
 //   {
-//     id: 'sbps-creditcard',
+//     id: 'クレジットカード決済',
 //     provider_id: 'sbps-creditcard',
-//     title: 'クレジットカード (SBPS)'
+//     title: 'クレジットカード決済'
 //   },
 //   {
-//     id: 'sbps-konbini',
+//     id: 'コンビニ払い',
 //     provider_id: 'sbps-konbini',
-//     title: 'コンビニ払い (SBPS)'
+//     title: 'コンビニ払い'
 //   },
 //   {
-//     id: 'store-payment',
+//     id: '店頭で決済',
 //     provider_id: 'store-payment',
-//     title: '店頭でのお支払い'
+//     title: '店頭で決済'
 //   },
-//     {
-//     id: 'invoice-payment',
+//  {
+//     id: '請求書払い',
 //     provider_id: 'invoice-payment',
-//     title: '請求書でのお支払い'
+//     title: '請求書払い'
+//   },
+//   {
+//     id: '代金引換',
+//     provider_id: 'invoice-payment',
+//     title: '代金引換'
 //   },
 // ];
 
@@ -52,7 +58,7 @@ export default async function CheckoutForm({
       <Addresses cart={cart} customer={customer} /> 
       <Shipping cart={cart} availableShippingMethods={shippingMethods} />
       {/* <Common cart={cart} customer={customer} />
-      <Addresses cart={cart} customer={customer} availableShippingMethods={shippingMethods} /> */}
+      <ShippingAddress cart={cart} customer={customer} availableShippingMethods={shippingMethods} /> */}
       <Payment cart={cart} availablePaymentMethods={paymentMethods} /> 
     </Box>
   )

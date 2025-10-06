@@ -29,7 +29,7 @@ export const profileNavItemsGroups = [
     {
       href: '/account/profile',
       icon: <SettingsIcon className="h-6 w-6" />,
-      label: 'アカウント設定',
+      label: '会員情報設定',
       type: 'link',
     },
   ],

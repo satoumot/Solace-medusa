@@ -11,7 +11,7 @@ export default function LoginPrompt({
   return (
     <Box className="flex w-full flex-col gap-6 bg-primary p-4 small:p-5">
       <Heading as="h2" className="text-xl small:text-2xl">
-        すでにアカウントをお持ちの方はこちら
+        すでに会員の方はこちら
       </Heading>
       <Button
         variant="tonal"

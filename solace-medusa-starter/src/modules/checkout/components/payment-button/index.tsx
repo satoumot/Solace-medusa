@@ -62,7 +62,7 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
         />
       )
     default:
-      return <Button disabled>Select a payment method</Button>
+      return <Button disabled>支払い方法を選んでください</Button>
   }
 }
 

@@ -114,7 +114,7 @@ const Register = ({ setCurrentView }: Props) => {
     >
       <Box className="flex w-full flex-col gap-6 bg-primary p-4 small:p-5">
         <Heading as="h2" className="text-xl small:text-2xl">
-          アカウント登録
+          新規会員登録
         </Heading>
         <form className="flex w-full flex-col" onSubmit={handleSubmit}>
           <Box className="flex w-full flex-col gap-y-4">
@@ -256,7 +256,7 @@ const Register = ({ setCurrentView }: Props) => {
             />
           )}
           <SubmitButton className="mt-6 w-full bg-[#B8193F] hover:bg-[#D6355D] active:bg-[#A11637]" data-testid="register-button">
-            アカウント登録
+            新規会員登録
           </SubmitButton>
         </form>
       </Box>

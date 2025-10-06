@@ -47,7 +47,7 @@ export function ProductTile({
         )} */}
         <LocalizedClientLink href={`/products/${product.handle}`}>
           <LoadingImage
-            src={product.thumbnail ||'/Noimage.png' }
+            src={product.thumbnail}
             alt={product.title}
             loading="lazy"
             className="h-full w-full object-cover"

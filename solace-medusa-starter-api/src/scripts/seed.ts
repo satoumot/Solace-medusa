@@ -24,7 +24,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
   const salesChannelModuleService = container.resolve(Modules.SALES_CHANNEL);
   const storeModuleService = container.resolve(Modules.STORE);
 
-  const countries = ['gb', 'de', 'dk', 'se', 'fr', 'es', 'it'];
+  const countries = ['jp'];
 
   logger.info('Seeding store data...');
   const [store] = await storeModuleService.listStores();
@@ -52,7 +52,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
       update: {
         supported_currencies: [
           {
-            currency_code: 'eur',
+            currency_code: 'jpy',
             is_default: true
           },
           {
@@ -68,8 +68,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
     input: {
       regions: [
         {
-          name: 'Europe',
-          currency_code: 'eur',
+          name: 'Japan',
+          currency_code: 'jpy',
           countries,
           payment_providers: ['pp_system_default']
         }
@@ -92,10 +92,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
     input: {
       locations: [
         {
-          name: 'European Warehouse',
+          name: 'SANSEIDO',
           address: {
-            city: 'Copenhagen',
-            country_code: 'DK',
+            city: 'tokyo',
+            country_code: 'JP',
             address_1: ''
           }
         }
@@ -127,40 +127,40 @@ export default async function seedDemoData({ container }: ExecArgs) {
   const shippingProfile = shippingProfileResult[0];
 
   const fulfillmentSet = await fulfillmentModuleService.createFulfillmentSets({
-    name: 'European Warehouse delivery',
+    name: 'Japan Delivery',
     type: 'shipping',
     service_zones: [
       {
-        name: 'Europe',
+        name: 'Japan',
         geo_zones: [
           {
-            country_code: 'gb',
+            country_code: 'jp',
             type: 'country'
           },
-          {
-            country_code: 'de',
-            type: 'country'
-          },
-          {
-            country_code: 'dk',
-            type: 'country'
-          },
-          {
-            country_code: 'se',
-            type: 'country'
-          },
-          {
-            country_code: 'fr',
-            type: 'country'
-          },
-          {
-            country_code: 'es',
-            type: 'country'
-          },
-          {
-            country_code: 'it',
-            type: 'country'
-          }
+          // {
+          //   country_code: 'de',
+          //   type: 'country'
+          // },
+          // {
+          //   country_code: 'dk',
+          //   type: 'country'
+          // },
+          // {
+          //   country_code: 'se',
+          //   type: 'country'
+          // },
+          // {
+          //   country_code: 'fr',
+          //   type: 'country'
+          // },
+          // {
+          //   country_code: 'es',
+          //   type: 'country'
+          // },
+          // {
+          //   country_code: 'it',
+          //   type: 'country'
+          // }
         ]
       }
     ]
@@ -178,14 +178,14 @@ export default async function seedDemoData({ container }: ExecArgs) {
   await createShippingOptionsWorkflow(container).run({
     input: [
       {
-        name: 'Standard Shipping',
+        name: '通常配送',
         price_type: 'flat',
         provider_id: 'manual_manual',
         service_zone_id: fulfillmentSet.service_zones[0].id,
         shipping_profile_id: shippingProfile.id,
         type: {
           label: 'Standard',
-          description: 'Ship in 2-3 days.',
+          description: '2~3日で発送します。',
           code: 'standard'
         },
         prices: [
@@ -194,12 +194,12 @@ export default async function seedDemoData({ container }: ExecArgs) {
             amount: 10
           },
           {
-            currency_code: 'eur',
-            amount: 10
+            currency_code: 'jpy',
+            amount: 1000
           },
           {
             region_id: region.id,
-            amount: 10
+            amount: 1000
           }
         ],
         rules: [
@@ -216,14 +216,14 @@ export default async function seedDemoData({ container }: ExecArgs) {
         ]
       },
       {
-        name: 'Express Shipping',
+        name: '速達配送',
         price_type: 'flat',
         provider_id: 'manual_manual',
         service_zone_id: fulfillmentSet.service_zones[0].id,
         shipping_profile_id: shippingProfile.id,
         type: {
           label: 'Express',
-          description: 'Ship in 24 hours.',
+          description: '24時間以内に発送します。',
           code: 'express'
         },
         prices: [
@@ -232,12 +232,12 @@ export default async function seedDemoData({ container }: ExecArgs) {
             amount: 10
           },
           {
-            currency_code: 'eur',
-            amount: 10
+            currency_code: 'jpy',
+            amount: 2000
           },
           {
             region_id: region.id,
-            amount: 10
+            amount: 2000
           }
         ],
         rules: [
@@ -255,6 +255,79 @@ export default async function seedDemoData({ container }: ExecArgs) {
       }
     ]
   });
+
+  // const pickupFulfillmentSet =
+  //   await fulfillmentModuleService.createFulfillmentSets({
+  //     name: 'Store pickup',
+  //     type: 'pickup',
+  //     service_zones: [
+  //       {
+  //         name: 'Store pickup',
+  //         geo_zones: [
+  //           {
+  //             country_code: 'jp',
+  //             type: 'country',
+  //           },
+  //           // {
+  //           //   country_code: 'dk',
+  //           //   type: 'country',
+  //           // },
+  //         ],
+  //       },
+  //     ],
+  //   });
+
+  // await remoteLink.create({
+  //   [Modules.STOCK_LOCATION]: {
+  //     stock_location_id: stockLocation.id,
+  //   },
+  //   [Modules.FULFILLMENT]: {
+  //     fulfillment_set_id: pickupFulfillmentSet.id,
+  //   },
+  // });
+
+  // await createShippingOptionsWorkflow(container).run({
+  //   input: [
+  //     {
+  //       name: '店頭受け取り',
+  //       price_type: 'flat',
+  //       provider_id: 'manual_manual',
+  //       service_zone_id: pickupFulfillmentSet.service_zones[0].id,
+  //       shipping_profile_id: shippingProfile.id,
+  //       type: {
+  //         label: 'Denmark Store Pickup',
+  //         description: '無料の店頭受け取りです。',
+  //         code: 'standard',
+  //       },
+  //       prices: [
+  //         {
+  //           currency_code: 'usd',
+  //           amount: 0,
+  //         },
+  //         {
+  //           currency_code: 'jpy',
+  //           amount: 0,
+  //         },
+  //         {
+  //           region_id: region.id,
+  //           amount: 0,
+  //         },
+  //       ],
+  //       rules: [
+  //         {
+  //           attribute: 'enabled_in_store',
+  //           value: '"true"',
+  //           operator: 'eq',
+  //         },
+  //         {
+  //           attribute: 'is_return',
+  //           value: 'false',
+  //           operator: 'eq',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // });
   logger.info('Finished seeding fulfillment data.');
 
   await linkSalesChannelsToStockLocationWorkflow(container).run({
@@ -326,10 +399,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
     input: {
       products: [
         {
-          title: 'Medusa T-Shirt',
+          title: 'Tシャツ',
           category_ids: getCategoryIdsByName('Shirts'),
           description:
-            'Reimagine the feeling of a classic T-shirt. With our cotton T-shirts, everyday essentials no longer have to be ordinary.',
+            '普通のTシャツです。コットンで着心地がいいです。',
           handle: 't-shirt',
           weight: 400,
           status: ProductStatus.PUBLISHED,
@@ -367,8 +440,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -385,8 +458,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -403,8 +476,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -421,8 +494,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -439,8 +512,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -457,8 +530,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -475,8 +548,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -493,8 +566,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -510,10 +583,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
           ]
         },
         {
-          title: 'Medusa Sweatshirt',
+          title: 'スウェット',
           category_ids: getCategoryIdsByName('Sweatshirts'),
           description:
-            'Reimagine the feeling of a classic sweatshirt. With our cotton sweatshirt, everyday essentials no longer have to be ordinary.',
+            '普通のスウェットです。コットンで着心地がいいです。',
           handle: 'sweatshirt',
           weight: 400,
           status: ProductStatus.PUBLISHED,
@@ -540,8 +613,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -557,8 +630,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -574,8 +647,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -591,8 +664,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -608,10 +681,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
           ]
         },
         {
-          title: 'Medusa Sweatpants',
+          title: 'スウェットパンツ',
           category_ids: getCategoryIdsByName('Pants'),
           description:
-            'Reimagine the feeling of classic sweatpants. With our cotton sweatpants, everyday essentials no longer have to be ordinary.',
+            '普通のスウェットパンツです。コットンで着心地がいいです。',
           handle: 'sweatpants',
           weight: 400,
           status: ProductStatus.PUBLISHED,
@@ -638,8 +711,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -655,8 +728,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -672,8 +745,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -689,8 +762,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -706,10 +779,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
           ]
         },
         {
-          title: 'Medusa Shorts',
+          title: 'ショートパンツ',
           category_ids: getCategoryIdsByName('Merch'),
           description:
-            'Reimagine the feeling of classic shorts. With our cotton shorts, everyday essentials no longer have to be ordinary.',
+            '普通のショートパンツです。コットンで着心地がいいです。',
           handle: 'shorts',
           weight: 400,
           status: ProductStatus.PUBLISHED,
@@ -736,8 +809,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -753,8 +826,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -770,8 +843,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,
@@ -787,8 +860,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               prices: [
                 {
-                  amount: 10,
-                  currency_code: 'eur'
+                  amount: 1000,
+                  currency_code: 'jpy'
                 },
                 {
                   amount: 15,

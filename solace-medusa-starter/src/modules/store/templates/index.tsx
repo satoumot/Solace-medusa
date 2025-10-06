@@ -58,11 +58,11 @@ export default async function StoreTemplate({
   return (
     <>
       <Container className="flex flex-col gap-8 !pb-8 !pt-4">
-        {/* <Box className="flex flex-col gap-4">
+        <Box className="flex flex-col gap-4">
           <Text className="text-md text-secondary">
-            {count === 1 ? `${count} product` : `${count} products`}
+            {count === 1 ? `${count} 件` : `${count} 件`}
           </Text>
-          <Box className="grid w-full grid-cols-2 items-center justify-between gap-2 small:flex small:flex-wrap">
+          {/* <Box className="grid w-full grid-cols-2 items-center justify-between gap-2 small:flex small:flex-wrap">
             <Box className="hidden small:flex">
               <ProductFilters filters={filters} />
             </Box>
@@ -73,9 +73,9 @@ export default async function StoreTemplate({
               options={storeSortOptions}
               sortBy={sortBy || 'relevance'}
             />
-          </Box>
+          </Box> */}
         </Box>
-        <ActiveProductFilters countryCode={countryCode} filters={filters} /> */}
+        {/* <ActiveProductFilters countryCode={countryCode} filters={filters} /> */}
         <Suspense fallback={<SkeletonProductGrid />}>
           {results && results.length > 0 ? (
             <PaginatedProducts

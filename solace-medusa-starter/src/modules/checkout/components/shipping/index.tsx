@@ -89,8 +89,7 @@ const Shipping: React.FC<ShippingProps> = ({
           )}
           受け取り方法
         </Heading>
-        {!isOpen &&
-          cart?.shipping_methods && (
+        {!isOpen && cart?.shipping_methods?.length > 0 && (
             <Button
               variant="tonal"
               size="sm"

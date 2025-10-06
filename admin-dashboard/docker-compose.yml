@@ -1,0 +1,19 @@
+# /root/medusa-starter/admin-dashboard/docker-compose.yml
+services:
+  admin-dashboard:
+    build: .
+    container_name: admin_dashboard
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env
+    environment:
+      - VITE_MEDUSA_BACKEND_URL=${VITE_MEDUSA_BACKEND_URL:-http://localhost:9000}
+      - VITE_MEDUSA_PROJECT=/src/backend
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /root/medusa-starter/backend:/src/backend
+    command: >
+      sh -c "npm run dev -- --host 0.0.0.0 --port 5173"

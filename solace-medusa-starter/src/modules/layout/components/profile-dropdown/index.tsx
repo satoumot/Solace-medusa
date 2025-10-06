@@ -95,7 +95,7 @@ const ProfileDropdown = ({ loggedIn }: { loggedIn: boolean }) => {
                   </Button>
                   <Button size="sm" asChild variant="tonal">
                     <LocalizedClientLink href="/account?mode=register">
-                      アカウント登録
+                      新規会員登録
                     </LocalizedClientLink>
                   </Button>
                 </Box>

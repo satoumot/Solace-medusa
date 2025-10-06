@@ -52,7 +52,7 @@ const ProfileEditDetails = ({
 
   useEffect(() => {
     if (isSuccess) {
-      toast('success', 'アカウント情報が更新されました')
+      toast('success', '会員情報が更新されました')
       close()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,7 +81,7 @@ const ProfileEditDetails = ({
             action={formAction}
           >
             <DialogHeader className="flex items-center text-xl medium:p-6 medium:text-2xl">
-              アカウント情報編集
+              会員情報編集
               <DialogClose className="right-4" />
             </DialogHeader>
             <VisuallyHidden.Root>
